@@ -1,0 +1,2132 @@
+{
+  "status": "success",
+  "timestamp": "2025-11-23T20:54:37.455879",
+  "total_locations": 7,
+  "locations": [
+    {
+      "site": 1,
+      "requested_coordinates": {
+        "latitude": 28.69536,
+        "longitude": 77.18168
+      },
+      "status": "success",
+      "data": {
+        "timestamp": "2025-11-23T20:54:39.139164",
+        "station_id": 10115,
+        "station_name": "Satyawati College, Delhi, Delhi, India",
+        "requested_location": {
+          "latitude": 28.69536,
+          "longitude": 77.18168
+        },
+        "station_location": {
+          "latitude": 28.69572,
+          "longitude": 77.181295
+        },
+        "overall_aqi": 414,
+        "measurement_time": "2025-11-23 20:00:00",
+        "timezone": "+05:30",
+        "concentrations": {
+          "no2": {
+            "value": 75.5,
+            "unit": "µg/m³",
+            "available": true
+          },
+          "o3": {
+            "value": 0.7,
+            "unit": "µg/m³",
+            "available": true
+          }
+        },
+        "all_iaqi": {
+          "co": {
+            "v": 46.7
+          },
+          "dew": {
+            "v": 11
+          },
+          "h": {
+            "v": 81.66
+          },
+          "no2": {
+            "v": 75.5
+          },
+          "o3": {
+            "v": 0.7
+          },
+          "p": {
+            "v": 982.2800000000001
+          },
+          "pm10": {
+            "v": 414
+          },
+          "pm25": {
+            "v": 337
+          },
+          "so2": {
+            "v": 10.5
+          },
+          "t": {
+            "v": 17.7
+          },
+          "w": {
+            "v": 0.3
+          },
+          "wd": {
+            "v": 243.6
+          }
+        }
+      },
+      "raw_response": {
+        "status": "ok",
+        "data": {
+          "aqi": 414,
+          "idx": 10115,
+          "attributions": [
+            {
+              "url": "http://dpccairdata.com/",
+              "name": "Delhi Pollution Control Commitee (Government of NCT of Delhi)",
+              "logo": "India-DPCCC.png"
+            },
+            {
+              "url": "https://waqi.info/",
+              "name": "World Air Quality Index Project"
+            }
+          ],
+          "city": {
+            "geo": [
+              28.69572,
+              77.181295
+            ],
+            "name": "Satyawati College, Delhi, Delhi, India",
+            "url": "https://aqicn.org/city/delhi/satyawati-college",
+            "location": ""
+          },
+          "dominentpol": "pm10",
+          "iaqi": {
+            "co": {
+              "v": 46.7
+            },
+            "dew": {
+              "v": 11
+            },
+            "h": {
+              "v": 81.66
+            },
+            "no2": {
+              "v": 75.5
+            },
+            "o3": {
+              "v": 0.7
+            },
+            "p": {
+              "v": 982.2800000000001
+            },
+            "pm10": {
+              "v": 414
+            },
+            "pm25": {
+              "v": 337
+            },
+            "so2": {
+              "v": 10.5
+            },
+            "t": {
+              "v": 17.7
+            },
+            "w": {
+              "v": 0.3
+            },
+            "wd": {
+              "v": 243.6
+            }
+          },
+          "time": {
+            "s": "2025-11-23 20:00:00",
+            "tz": "+05:30",
+            "v": 1763928000,
+            "iso": "2025-11-23T20:00:00+05:30"
+          },
+          "forecast": {
+            "daily": {
+              "pm10": [
+                {
+                  "avg": 97,
+                  "day": "2025-11-21",
+                  "max": 121,
+                  "min": 73
+                },
+                {
+                  "avg": 97,
+                  "day": "2025-11-22",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 94,
+                  "day": "2025-11-23",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 79,
+                  "day": "2025-11-24",
+                  "max": 121,
+                  "min": 46
+                },
+                {
+                  "avg": 92,
+                  "day": "2025-11-25",
+                  "max": 123,
+                  "min": 46
+                },
+                {
+                  "avg": 80,
+                  "day": "2025-11-26",
+                  "max": 121,
+                  "min": 54
+                },
+                {
+                  "avg": 96,
+                  "day": "2025-11-27",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 69,
+                  "day": "2025-11-28",
+                  "max": 73,
+                  "min": 47
+                },
+                {
+                  "avg": 72,
+                  "day": "2025-11-29",
+                  "max": 73,
+                  "min": 46
+                }
+              ],
+              "pm25": [
+                {
+                  "avg": 208,
+                  "day": "2025-11-21",
+                  "max": 248,
+                  "min": 174
+                },
+                {
+                  "avg": 213,
+                  "day": "2025-11-22",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 207,
+                  "day": "2025-11-23",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 183,
+                  "day": "2025-11-24",
+                  "max": 248,
+                  "min": 138
+                },
+                {
+                  "avg": 202,
+                  "day": "2025-11-25",
+                  "max": 252,
+                  "min": 138
+                },
+                {
+                  "avg": 184,
+                  "day": "2025-11-26",
+                  "max": 248,
+                  "min": 155
+                },
+                {
+                  "avg": 210,
+                  "day": "2025-11-27",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 170,
+                  "day": "2025-11-28",
+                  "max": 174,
+                  "min": 140
+                },
+                {
+                  "avg": 173,
+                  "day": "2025-11-29",
+                  "max": 174,
+                  "min": 138
+                }
+              ],
+              "uvi": [
+                {
+                  "avg": 1,
+                  "day": "2025-11-23",
+                  "max": 3,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-24",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-25",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-26",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-27",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 0,
+                  "day": "2025-11-28",
+                  "max": 0,
+                  "min": 0
+                }
+              ]
+            }
+          },
+          "debug": {
+            "sync": "2025-11-23T23:47:27+09:00"
+          }
+        }
+      }
+    },
+    {
+      "site": 2,
+      "requested_coordinates": {
+        "latitude": 28.5718,
+        "longitude": 77.07125
+      },
+      "status": "success",
+      "data": {
+        "timestamp": "2025-11-23T20:54:39.899357",
+        "station_id": 10119,
+        "station_name": "National Institute of Malaria Research, Sector 8, Dwarka, Delhi, Delhi, India",
+        "requested_location": {
+          "latitude": 28.5718,
+          "longitude": 77.07125
+        },
+        "station_location": {
+          "latitude": 28.576909,
+          "longitude": 77.075898
+        },
+        "overall_aqi": 207,
+        "measurement_time": "2025-11-23 16:00:00",
+        "timezone": "+05:30",
+        "concentrations": {
+          "no2": {
+            "value": 26,
+            "unit": "µg/m³",
+            "available": true
+          },
+          "o3": {
+            "value": 55.2,
+            "unit": "µg/m³",
+            "available": true
+          }
+        },
+        "all_iaqi": {
+          "co": {
+            "v": 11.6
+          },
+          "dew": {
+            "v": 8
+          },
+          "h": {
+            "v": 52.166666666666664
+          },
+          "no2": {
+            "v": 26
+          },
+          "o3": {
+            "v": 55.2
+          },
+          "p": {
+            "v": 984.0333333333333
+          },
+          "pm10": {
+            "v": 143
+          },
+          "pm25": {
+            "v": 207
+          },
+          "so2": {
+            "v": 5.3
+          },
+          "t": {
+            "v": 22.833333333333332
+          },
+          "w": {
+            "v": 0.20000000000000004
+          },
+          "wd": {
+            "v": 336.9
+          }
+        }
+      },
+      "raw_response": {
+        "status": "ok",
+        "data": {
+          "aqi": 207,
+          "idx": 10119,
+          "attributions": [
+            {
+              "url": "http://dpccairdata.com/",
+              "name": "Delhi Pollution Control Commitee (Government of NCT of Delhi)",
+              "logo": "India-DPCCC.png"
+            },
+            {
+              "url": "https://waqi.info/",
+              "name": "World Air Quality Index Project"
+            }
+          ],
+          "city": {
+            "geo": [
+              28.576909,
+              77.075898
+            ],
+            "name": "National Institute of Malaria Research, Sector 8, Dwarka, Delhi, Delhi, India",
+            "url": "https://aqicn.org/city/delhi/national-institute-of-malaria-research--sector-8--dwarka",
+            "location": ""
+          },
+          "dominentpol": "pm25",
+          "iaqi": {
+            "co": {
+              "v": 11.6
+            },
+            "dew": {
+              "v": 8
+            },
+            "h": {
+              "v": 52.166666666666664
+            },
+            "no2": {
+              "v": 26
+            },
+            "o3": {
+              "v": 55.2
+            },
+            "p": {
+              "v": 984.0333333333333
+            },
+            "pm10": {
+              "v": 143
+            },
+            "pm25": {
+              "v": 207
+            },
+            "so2": {
+              "v": 5.3
+            },
+            "t": {
+              "v": 22.833333333333332
+            },
+            "w": {
+              "v": 0.20000000000000004
+            },
+            "wd": {
+              "v": 336.9
+            }
+          },
+          "time": {
+            "s": "2025-11-23 16:00:00",
+            "tz": "+05:30",
+            "v": 1763913600,
+            "iso": "2025-11-23T16:00:00+05:30"
+          },
+          "forecast": {
+            "daily": {
+              "pm10": [
+                {
+                  "avg": 87,
+                  "day": "2025-11-21",
+                  "max": 100,
+                  "min": 73
+                },
+                {
+                  "avg": 97,
+                  "day": "2025-11-22",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 94,
+                  "day": "2025-11-23",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 73,
+                  "day": "2025-11-24",
+                  "max": 100,
+                  "min": 46
+                },
+                {
+                  "avg": 91,
+                  "day": "2025-11-25",
+                  "max": 123,
+                  "min": 46
+                },
+                {
+                  "avg": 74,
+                  "day": "2025-11-26",
+                  "max": 100,
+                  "min": 50
+                },
+                {
+                  "avg": 95,
+                  "day": "2025-11-27",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 69,
+                  "day": "2025-11-28",
+                  "max": 73,
+                  "min": 51
+                },
+                {
+                  "avg": 72,
+                  "day": "2025-11-29",
+                  "max": 73,
+                  "min": 46
+                }
+              ],
+              "pm25": [
+                {
+                  "avg": 190,
+                  "day": "2025-11-21",
+                  "max": 206,
+                  "min": 174
+                },
+                {
+                  "avg": 211,
+                  "day": "2025-11-22",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 207,
+                  "day": "2025-11-23",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 173,
+                  "day": "2025-11-24",
+                  "max": 206,
+                  "min": 138
+                },
+                {
+                  "avg": 202,
+                  "day": "2025-11-25",
+                  "max": 252,
+                  "min": 138
+                },
+                {
+                  "avg": 175,
+                  "day": "2025-11-26",
+                  "max": 206,
+                  "min": 148
+                },
+                {
+                  "avg": 208,
+                  "day": "2025-11-27",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 170,
+                  "day": "2025-11-28",
+                  "max": 174,
+                  "min": 151
+                },
+                {
+                  "avg": 173,
+                  "day": "2025-11-29",
+                  "max": 174,
+                  "min": 138
+                }
+              ],
+              "uvi": [
+                {
+                  "avg": 1,
+                  "day": "2025-11-23",
+                  "max": 3,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-24",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-25",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-26",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-27",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 0,
+                  "day": "2025-11-28",
+                  "max": 0,
+                  "min": 0
+                }
+              ]
+            }
+          },
+          "debug": {
+            "sync": "2025-11-23T20:18:10+09:00"
+          }
+        }
+      }
+    },
+    {
+      "site": 3,
+      "requested_coordinates": {
+        "latitude": 28.58278,
+        "longitude": 77.23441
+      },
+      "status": "success",
+      "data": {
+        "timestamp": "2025-11-23T20:54:41.684913",
+        "station_id": 10705,
+        "station_name": "Jawaharlal Nehru Stadium, Delhi, Delhi, India",
+        "requested_location": {
+          "latitude": 28.58278,
+          "longitude": 77.23441
+        },
+        "station_location": {
+          "latitude": 28.582846,
+          "longitude": 77.234366
+        },
+        "overall_aqi": 409,
+        "measurement_time": "2025-11-23 20:00:00",
+        "timezone": "+05:30",
+        "concentrations": {
+          "no2": {
+            "value": 64.7,
+            "unit": "µg/m³",
+            "available": true
+          },
+          "o3": {
+            "value": 1.5,
+            "unit": "µg/m³",
+            "available": true
+          }
+        },
+        "all_iaqi": {
+          "co": {
+            "v": 0.1
+          },
+          "dew": {
+            "v": 11
+          },
+          "h": {
+            "v": 83
+          },
+          "no2": {
+            "v": 64.7
+          },
+          "o3": {
+            "v": 1.5
+          },
+          "p": {
+            "v": 999.3333333333334
+          },
+          "pm10": {
+            "v": 409
+          },
+          "pm25": {
+            "v": 237
+          },
+          "so2": {
+            "v": 4.7
+          },
+          "t": {
+            "v": 18.05
+          },
+          "w": {
+            "v": 0.3
+          },
+          "wd": {
+            "v": 319
+          }
+        }
+      },
+      "raw_response": {
+        "status": "ok",
+        "data": {
+          "aqi": 409,
+          "idx": 10705,
+          "attributions": [
+            {
+              "url": "http://dpccairdata.com/",
+              "name": "Delhi Pollution Control Commitee (Government of NCT of Delhi)",
+              "logo": "India-DPCCC.png"
+            },
+            {
+              "url": "https://waqi.info/",
+              "name": "World Air Quality Index Project"
+            }
+          ],
+          "city": {
+            "geo": [
+              28.582846,
+              77.234366
+            ],
+            "name": "Jawaharlal Nehru Stadium, Delhi, Delhi, India",
+            "url": "https://aqicn.org/city/delhi/jawaharlal-nehru-stadium",
+            "location": ""
+          },
+          "dominentpol": "pm10",
+          "iaqi": {
+            "co": {
+              "v": 0.1
+            },
+            "dew": {
+              "v": 11
+            },
+            "h": {
+              "v": 83
+            },
+            "no2": {
+              "v": 64.7
+            },
+            "o3": {
+              "v": 1.5
+            },
+            "p": {
+              "v": 999.3333333333334
+            },
+            "pm10": {
+              "v": 409
+            },
+            "pm25": {
+              "v": 237
+            },
+            "so2": {
+              "v": 4.7
+            },
+            "t": {
+              "v": 18.05
+            },
+            "w": {
+              "v": 0.3
+            },
+            "wd": {
+              "v": 319
+            }
+          },
+          "time": {
+            "s": "2025-11-23 20:00:00",
+            "tz": "+05:30",
+            "v": 1763928000,
+            "iso": "2025-11-23T20:00:00+05:30"
+          },
+          "forecast": {
+            "daily": {
+              "pm10": [
+                {
+                  "avg": 80,
+                  "day": "2025-11-21",
+                  "max": 87,
+                  "min": 73
+                },
+                {
+                  "avg": 98,
+                  "day": "2025-11-22",
+                  "max": 123,
+                  "min": 61
+                },
+                {
+                  "avg": 93,
+                  "day": "2025-11-23",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 70,
+                  "day": "2025-11-24",
+                  "max": 87,
+                  "min": 46
+                },
+                {
+                  "avg": 87,
+                  "day": "2025-11-25",
+                  "max": 123,
+                  "min": 47
+                },
+                {
+                  "avg": 69,
+                  "day": "2025-11-26",
+                  "max": 85,
+                  "min": 53
+                },
+                {
+                  "avg": 95,
+                  "day": "2025-11-27",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 69,
+                  "day": "2025-11-28",
+                  "max": 73,
+                  "min": 46
+                },
+                {
+                  "avg": 72,
+                  "day": "2025-11-29",
+                  "max": 73,
+                  "min": 46
+                }
+              ],
+              "pm25": [
+                {
+                  "avg": 180,
+                  "day": "2025-11-21",
+                  "max": 186,
+                  "min": 174
+                },
+                {
+                  "avg": 210,
+                  "day": "2025-11-22",
+                  "max": 252,
+                  "min": 160
+                },
+                {
+                  "avg": 207,
+                  "day": "2025-11-23",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 170,
+                  "day": "2025-11-24",
+                  "max": 189,
+                  "min": 138
+                },
+                {
+                  "avg": 194,
+                  "day": "2025-11-25",
+                  "max": 246,
+                  "min": 138
+                },
+                {
+                  "avg": 170,
+                  "day": "2025-11-26",
+                  "max": 186,
+                  "min": 153
+                },
+                {
+                  "avg": 207,
+                  "day": "2025-11-27",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 169,
+                  "day": "2025-11-28",
+                  "max": 174,
+                  "min": 138
+                },
+                {
+                  "avg": 173,
+                  "day": "2025-11-29",
+                  "max": 174,
+                  "min": 138
+                }
+              ],
+              "uvi": [
+                {
+                  "avg": 1,
+                  "day": "2025-11-23",
+                  "max": 3,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-24",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-25",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-26",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-27",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 0,
+                  "day": "2025-11-28",
+                  "max": 0,
+                  "min": 0
+                }
+              ]
+            }
+          },
+          "debug": {
+            "sync": "2025-11-24T00:20:51+09:00"
+          }
+        }
+      }
+    },
+    {
+      "site": 4,
+      "requested_coordinates": {
+        "latitude": 28.82286,
+        "longitude": 77.10197
+      },
+      "status": "success",
+      "data": {
+        "timestamp": "2025-11-23T20:54:42.452342",
+        "station_id": 10706,
+        "station_name": "Narela, Delhi, Delhi, India",
+        "requested_location": {
+          "latitude": 28.82286,
+          "longitude": 77.10197
+        },
+        "station_location": {
+          "latitude": 28.820629,
+          "longitude": 77.101099
+        },
+        "overall_aqi": 329,
+        "measurement_time": "2025-11-23 20:00:00",
+        "timezone": "+05:30",
+        "concentrations": {
+          "no2": {
+            "value": 38.5,
+            "unit": "µg/m³",
+            "available": true
+          },
+          "o3": {
+            "value": 5.9,
+            "unit": "µg/m³",
+            "available": true
+          }
+        },
+        "all_iaqi": {
+          "co": {
+            "v": 0.1
+          },
+          "dew": {
+            "v": 11
+          },
+          "h": {
+            "v": 72.25
+          },
+          "no2": {
+            "v": 38.5
+          },
+          "o3": {
+            "v": 5.9
+          },
+          "p": {
+            "v": 997
+          },
+          "pm10": {
+            "v": 329
+          },
+          "pm25": {
+            "v": 302
+          },
+          "so2": {
+            "v": 10
+          },
+          "t": {
+            "v": 18.119999999999997
+          },
+          "w": {
+            "v": 0.3
+          },
+          "wd": {
+            "v": 161
+          }
+        }
+      },
+      "raw_response": {
+        "status": "ok",
+        "data": {
+          "aqi": 329,
+          "idx": 10706,
+          "attributions": [
+            {
+              "url": "http://dpccairdata.com/",
+              "name": "Delhi Pollution Control Commitee (Government of NCT of Delhi)",
+              "logo": "India-DPCCC.png"
+            },
+            {
+              "url": "https://waqi.info/",
+              "name": "World Air Quality Index Project"
+            }
+          ],
+          "city": {
+            "geo": [
+              28.820629,
+              77.101099
+            ],
+            "name": "Narela, Delhi, Delhi, India",
+            "url": "https://aqicn.org/city/delhi/narela",
+            "location": ""
+          },
+          "dominentpol": "pm10",
+          "iaqi": {
+            "co": {
+              "v": 0.1
+            },
+            "dew": {
+              "v": 11
+            },
+            "h": {
+              "v": 72.25
+            },
+            "no2": {
+              "v": 38.5
+            },
+            "o3": {
+              "v": 5.9
+            },
+            "p": {
+              "v": 997
+            },
+            "pm10": {
+              "v": 329
+            },
+            "pm25": {
+              "v": 302
+            },
+            "so2": {
+              "v": 10
+            },
+            "t": {
+              "v": 18.119999999999997
+            },
+            "w": {
+              "v": 0.3
+            },
+            "wd": {
+              "v": 161
+            }
+          },
+          "time": {
+            "s": "2025-11-23 20:00:00",
+            "tz": "+05:30",
+            "v": 1763928000,
+            "iso": "2025-11-23T20:00:00+05:30"
+          },
+          "forecast": {
+            "daily": {
+              "pm10": [
+                {
+                  "avg": 98,
+                  "day": "2025-11-21",
+                  "max": 123,
+                  "min": 73
+                },
+                {
+                  "avg": 97,
+                  "day": "2025-11-22",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 91,
+                  "day": "2025-11-23",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 70,
+                  "day": "2025-11-24",
+                  "max": 94,
+                  "min": 46
+                },
+                {
+                  "avg": 77,
+                  "day": "2025-11-25",
+                  "max": 94,
+                  "min": 46
+                },
+                {
+                  "avg": 73,
+                  "day": "2025-11-26",
+                  "max": 94,
+                  "min": 57
+                },
+                {
+                  "avg": 96,
+                  "day": "2025-11-27",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 66,
+                  "day": "2025-11-28",
+                  "max": 73,
+                  "min": 46
+                },
+                {
+                  "avg": 71,
+                  "day": "2025-11-29",
+                  "max": 73,
+                  "min": 46
+                }
+              ],
+              "pm25": [
+                {
+                  "avg": 210,
+                  "day": "2025-11-21",
+                  "max": 252,
+                  "min": 174
+                },
+                {
+                  "avg": 213,
+                  "day": "2025-11-22",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 195,
+                  "day": "2025-11-23",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 171,
+                  "day": "2025-11-24",
+                  "max": 196,
+                  "min": 138
+                },
+                {
+                  "avg": 177,
+                  "day": "2025-11-25",
+                  "max": 196,
+                  "min": 138
+                },
+                {
+                  "avg": 174,
+                  "day": "2025-11-26",
+                  "max": 196,
+                  "min": 157
+                },
+                {
+                  "avg": 210,
+                  "day": "2025-11-27",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 167,
+                  "day": "2025-11-28",
+                  "max": 174,
+                  "min": 138
+                },
+                {
+                  "avg": 172,
+                  "day": "2025-11-29",
+                  "max": 174,
+                  "min": 138
+                }
+              ],
+              "uvi": [
+                {
+                  "avg": 1,
+                  "day": "2025-11-23",
+                  "max": 3,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-24",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-25",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-26",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-27",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 0,
+                  "day": "2025-11-28",
+                  "max": 0,
+                  "min": 0
+                }
+              ]
+            }
+          },
+          "debug": {
+            "sync": "2025-11-24T00:20:51+09:00"
+          }
+        }
+      }
+    },
+    {
+      "site": 5,
+      "requested_coordinates": {
+        "latitude": 28.53077,
+        "longitude": 77.27123
+      },
+      "status": "success",
+      "data": {
+        "timestamp": "2025-11-23T20:54:43.209886",
+        "station_id": 10116,
+        "station_name": "DITE Okhla, Delhi, Delhi, India",
+        "requested_location": {
+          "latitude": 28.53077,
+          "longitude": 77.27123
+        },
+        "station_location": {
+          "latitude": 28.531314,
+          "longitude": 77.270686
+        },
+        "overall_aqi": 183,
+        "measurement_time": "2025-11-23 16:00:00",
+        "timezone": "+05:30",
+        "concentrations": {
+          "no2": {
+            "value": 40,
+            "unit": "µg/m³",
+            "available": true
+          },
+          "o3": {
+            "value": 82.5,
+            "unit": "µg/m³",
+            "available": true
+          }
+        },
+        "all_iaqi": {
+          "co": {
+            "v": 1.6
+          },
+          "dew": {
+            "v": 8
+          },
+          "h": {
+            "v": 43.4
+          },
+          "no2": {
+            "v": 40
+          },
+          "o3": {
+            "v": 82.5
+          },
+          "p": {
+            "v": 977.9
+          },
+          "pm10": {
+            "v": 139
+          },
+          "pm25": {
+            "v": 183
+          },
+          "so2": {
+            "v": 4.9
+          },
+          "t": {
+            "v": 21.3
+          },
+          "w": {
+            "v": 0.6
+          },
+          "wd": {
+            "v": 65.8
+          }
+        }
+      },
+      "raw_response": {
+        "status": "ok",
+        "data": {
+          "aqi": 183,
+          "idx": 10116,
+          "attributions": [
+            {
+              "url": "http://dpccairdata.com/",
+              "name": "Delhi Pollution Control Commitee (Government of NCT of Delhi)",
+              "logo": "India-DPCCC.png"
+            },
+            {
+              "url": "https://waqi.info/",
+              "name": "World Air Quality Index Project"
+            }
+          ],
+          "city": {
+            "geo": [
+              28.531314,
+              77.270686
+            ],
+            "name": "DITE Okhla, Delhi, Delhi, India",
+            "url": "https://aqicn.org/city/delhi/dite-okhla",
+            "location": ""
+          },
+          "dominentpol": "pm25",
+          "iaqi": {
+            "co": {
+              "v": 1.6
+            },
+            "dew": {
+              "v": 8
+            },
+            "h": {
+              "v": 43.4
+            },
+            "no2": {
+              "v": 40
+            },
+            "o3": {
+              "v": 82.5
+            },
+            "p": {
+              "v": 977.9
+            },
+            "pm10": {
+              "v": 139
+            },
+            "pm25": {
+              "v": 183
+            },
+            "so2": {
+              "v": 4.9
+            },
+            "t": {
+              "v": 21.3
+            },
+            "w": {
+              "v": 0.6
+            },
+            "wd": {
+              "v": 65.8
+            }
+          },
+          "time": {
+            "s": "2025-11-23 16:00:00",
+            "tz": "+05:30",
+            "v": 1763913600,
+            "iso": "2025-11-23T16:00:00+05:30"
+          },
+          "forecast": {
+            "daily": {
+              "pm10": [
+                {
+                  "avg": 73,
+                  "day": "2025-11-21",
+                  "max": 73,
+                  "min": 73
+                },
+                {
+                  "avg": 98,
+                  "day": "2025-11-22",
+                  "max": 123,
+                  "min": 66
+                },
+                {
+                  "avg": 93,
+                  "day": "2025-11-23",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 65,
+                  "day": "2025-11-24",
+                  "max": 73,
+                  "min": 46
+                },
+                {
+                  "avg": 83,
+                  "day": "2025-11-25",
+                  "max": 123,
+                  "min": 46
+                },
+                {
+                  "avg": 65,
+                  "day": "2025-11-26",
+                  "max": 73,
+                  "min": 49
+                },
+                {
+                  "avg": 93,
+                  "day": "2025-11-27",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 69,
+                  "day": "2025-11-28",
+                  "max": 73,
+                  "min": 52
+                },
+                {
+                  "avg": 72,
+                  "day": "2025-11-29",
+                  "max": 73,
+                  "min": 46
+                }
+              ],
+              "pm25": [
+                {
+                  "avg": 174,
+                  "day": "2025-11-21",
+                  "max": 174,
+                  "min": 174
+                },
+                {
+                  "avg": 208,
+                  "day": "2025-11-22",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 206,
+                  "day": "2025-11-23",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 164,
+                  "day": "2025-11-24",
+                  "max": 174,
+                  "min": 138
+                },
+                {
+                  "avg": 189,
+                  "day": "2025-11-25",
+                  "max": 252,
+                  "min": 138
+                },
+                {
+                  "avg": 166,
+                  "day": "2025-11-26",
+                  "max": 174,
+                  "min": 145
+                },
+                {
+                  "avg": 204,
+                  "day": "2025-11-27",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 169,
+                  "day": "2025-11-28",
+                  "max": 174,
+                  "min": 151
+                },
+                {
+                  "avg": 173,
+                  "day": "2025-11-29",
+                  "max": 174,
+                  "min": 138
+                }
+              ],
+              "uvi": [
+                {
+                  "avg": 1,
+                  "day": "2025-11-23",
+                  "max": 3,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-24",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-25",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-26",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-27",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 0,
+                  "day": "2025-11-28",
+                  "max": 0,
+                  "min": 0
+                }
+              ]
+            }
+          },
+          "debug": {
+            "sync": "2025-11-23T19:46:56+09:00"
+          }
+        }
+      }
+    },
+    {
+      "site": 6,
+      "requested_coordinates": {
+        "latitude": 28.72954,
+        "longitude": 77.09601
+      },
+      "status": "success",
+      "data": {
+        "timestamp": "2025-11-23T20:54:43.970402",
+        "station_id": 10117,
+        "station_name": "Shaheed Sukhdev College of Business Studies, Rohini, Delhi, Delhi, India",
+        "requested_location": {
+          "latitude": 28.72954,
+          "longitude": 77.09601
+        },
+        "station_location": {
+          "latitude": 28.732743,
+          "longitude": 77.118788
+        },
+        "overall_aqi": 398,
+        "measurement_time": "2025-11-23 15:00:00",
+        "timezone": "+05:30",
+        "concentrations": {
+          "no2": {
+            "value": 13.9,
+            "unit": "µg/m³",
+            "available": true
+          },
+          "o3": {
+            "value": 123.3,
+            "unit": "µg/m³",
+            "available": true
+          }
+        },
+        "all_iaqi": {
+          "co": {
+            "v": 10.7
+          },
+          "dew": {
+            "v": 8
+          },
+          "h": {
+            "v": 43.25
+          },
+          "no2": {
+            "v": 13.9
+          },
+          "o3": {
+            "v": 123.3
+          },
+          "p": {
+            "v": 988.725
+          },
+          "pm10": {
+            "v": 398
+          },
+          "pm25": {
+            "v": 372
+          },
+          "so2": {
+            "v": 11.8
+          },
+          "t": {
+            "v": 26.5
+          },
+          "w": {
+            "v": 0.5499999999999999
+          },
+          "wd": {
+            "v": 296.3
+          }
+        }
+      },
+      "raw_response": {
+        "status": "ok",
+        "data": {
+          "aqi": 398,
+          "idx": 10117,
+          "attributions": [
+            {
+              "url": "http://dpccairdata.com/",
+              "name": "Delhi Pollution Control Commitee (Government of NCT of Delhi)",
+              "logo": "India-DPCCC.png"
+            },
+            {
+              "url": "https://waqi.info/",
+              "name": "World Air Quality Index Project"
+            }
+          ],
+          "city": {
+            "geo": [
+              28.732743,
+              77.118788
+            ],
+            "name": "Shaheed Sukhdev College of Business Studies, Rohini, Delhi, Delhi, India",
+            "url": "https://aqicn.org/city/delhi/shaheed-sukhdev-college-of-business-studies--rohini",
+            "location": ""
+          },
+          "dominentpol": "pm10",
+          "iaqi": {
+            "co": {
+              "v": 10.7
+            },
+            "dew": {
+              "v": 8
+            },
+            "h": {
+              "v": 43.25
+            },
+            "no2": {
+              "v": 13.9
+            },
+            "o3": {
+              "v": 123.3
+            },
+            "p": {
+              "v": 988.725
+            },
+            "pm10": {
+              "v": 398
+            },
+            "pm25": {
+              "v": 372
+            },
+            "so2": {
+              "v": 11.8
+            },
+            "t": {
+              "v": 26.5
+            },
+            "w": {
+              "v": 0.5499999999999999
+            },
+            "wd": {
+              "v": 296.3
+            }
+          },
+          "time": {
+            "s": "2025-11-23 15:00:00",
+            "tz": "+05:30",
+            "v": 1763910000,
+            "iso": "2025-11-23T15:00:00+05:30"
+          },
+          "forecast": {
+            "daily": {
+              "pm10": [
+                {
+                  "avg": 97,
+                  "day": "2025-11-21",
+                  "max": 121,
+                  "min": 73
+                },
+                {
+                  "avg": 97,
+                  "day": "2025-11-22",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 94,
+                  "day": "2025-11-23",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 79,
+                  "day": "2025-11-24",
+                  "max": 121,
+                  "min": 46
+                },
+                {
+                  "avg": 92,
+                  "day": "2025-11-25",
+                  "max": 123,
+                  "min": 46
+                },
+                {
+                  "avg": 80,
+                  "day": "2025-11-26",
+                  "max": 121,
+                  "min": 54
+                },
+                {
+                  "avg": 96,
+                  "day": "2025-11-27",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 69,
+                  "day": "2025-11-28",
+                  "max": 73,
+                  "min": 47
+                },
+                {
+                  "avg": 72,
+                  "day": "2025-11-29",
+                  "max": 73,
+                  "min": 46
+                }
+              ],
+              "pm25": [
+                {
+                  "avg": 208,
+                  "day": "2025-11-21",
+                  "max": 248,
+                  "min": 174
+                },
+                {
+                  "avg": 213,
+                  "day": "2025-11-22",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 207,
+                  "day": "2025-11-23",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 183,
+                  "day": "2025-11-24",
+                  "max": 248,
+                  "min": 138
+                },
+                {
+                  "avg": 202,
+                  "day": "2025-11-25",
+                  "max": 252,
+                  "min": 138
+                },
+                {
+                  "avg": 184,
+                  "day": "2025-11-26",
+                  "max": 248,
+                  "min": 155
+                },
+                {
+                  "avg": 210,
+                  "day": "2025-11-27",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 170,
+                  "day": "2025-11-28",
+                  "max": 174,
+                  "min": 140
+                },
+                {
+                  "avg": 173,
+                  "day": "2025-11-29",
+                  "max": 174,
+                  "min": 138
+                }
+              ],
+              "uvi": [
+                {
+                  "avg": 1,
+                  "day": "2025-11-23",
+                  "max": 3,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-24",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-25",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-26",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-27",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 0,
+                  "day": "2025-11-28",
+                  "max": 0,
+                  "min": 0
+                }
+              ]
+            }
+          },
+          "debug": {
+            "sync": "2025-11-23T19:23:59+09:00"
+          }
+        }
+      }
+    },
+    {
+      "site": 7,
+      "requested_coordinates": {
+        "latitude": 28.71052,
+        "longitude": 77.24951
+      },
+      "status": "success",
+      "data": {
+        "timestamp": "2025-11-23T20:54:44.732463",
+        "station_id": 10121,
+        "station_name": "Sonia Vihar Water Treatment Plant DJB, Delhi, Delhi, India",
+        "requested_location": {
+          "latitude": 28.71052,
+          "longitude": 77.24951
+        },
+        "station_location": {
+          "latitude": 28.710066,
+          "longitude": 77.24622
+        },
+        "overall_aqi": 249,
+        "measurement_time": "2025-11-23 17:00:00",
+        "timezone": "+05:30",
+        "concentrations": {
+          "no2": {
+            "value": 16.1,
+            "unit": "µg/m³",
+            "available": true
+          },
+          "o3": {
+            "value": 34.1,
+            "unit": "µg/m³",
+            "available": true
+          }
+        },
+        "all_iaqi": {
+          "co": {
+            "v": 17.4
+          },
+          "dew": {
+            "v": 8
+          },
+          "h": {
+            "v": 55.92
+          },
+          "no2": {
+            "v": 16.1
+          },
+          "o3": {
+            "v": 34.1
+          },
+          "p": {
+            "v": 985.9199999999998
+          },
+          "pm10": {
+            "v": 168
+          },
+          "pm25": {
+            "v": 249
+          },
+          "so2": {
+            "v": 6.5
+          },
+          "t": {
+            "v": 23.52
+          },
+          "w": {
+            "v": 0.27999999999999997
+          },
+          "wd": {
+            "v": 203.5
+          }
+        }
+      },
+      "raw_response": {
+        "status": "ok",
+        "data": {
+          "aqi": 249,
+          "idx": 10121,
+          "attributions": [
+            {
+              "url": "http://dpccairdata.com/",
+              "name": "Delhi Pollution Control Commitee (Government of NCT of Delhi)",
+              "logo": "India-DPCCC.png"
+            },
+            {
+              "url": "https://waqi.info/",
+              "name": "World Air Quality Index Project"
+            }
+          ],
+          "city": {
+            "geo": [
+              28.710066,
+              77.24622
+            ],
+            "name": "Sonia Vihar Water Treatment Plant DJB, Delhi, Delhi, India",
+            "url": "https://aqicn.org/city/delhi/sonia-vihar-water-treatment-plant-djb",
+            "location": ""
+          },
+          "dominentpol": "pm25",
+          "iaqi": {
+            "co": {
+              "v": 17.4
+            },
+            "dew": {
+              "v": 8
+            },
+            "h": {
+              "v": 55.92
+            },
+            "no2": {
+              "v": 16.1
+            },
+            "o3": {
+              "v": 34.1
+            },
+            "p": {
+              "v": 985.9199999999998
+            },
+            "pm10": {
+              "v": 168
+            },
+            "pm25": {
+              "v": 249
+            },
+            "so2": {
+              "v": 6.5
+            },
+            "t": {
+              "v": 23.52
+            },
+            "w": {
+              "v": 0.27999999999999997
+            },
+            "wd": {
+              "v": 203.5
+            }
+          },
+          "time": {
+            "s": "2025-11-23 17:00:00",
+            "tz": "+05:30",
+            "v": 1763917200,
+            "iso": "2025-11-23T17:00:00+05:30"
+          },
+          "forecast": {
+            "daily": {
+              "pm10": [
+                {
+                  "avg": 97,
+                  "day": "2025-11-21",
+                  "max": 120,
+                  "min": 73
+                },
+                {
+                  "avg": 98,
+                  "day": "2025-11-22",
+                  "max": 123,
+                  "min": 61
+                },
+                {
+                  "avg": 94,
+                  "day": "2025-11-23",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 79,
+                  "day": "2025-11-24",
+                  "max": 120,
+                  "min": 46
+                },
+                {
+                  "avg": 89,
+                  "day": "2025-11-25",
+                  "max": 123,
+                  "min": 50
+                },
+                {
+                  "avg": 77,
+                  "day": "2025-11-26",
+                  "max": 111,
+                  "min": 58
+                },
+                {
+                  "avg": 96,
+                  "day": "2025-11-27",
+                  "max": 123,
+                  "min": 58
+                },
+                {
+                  "avg": 68,
+                  "day": "2025-11-28",
+                  "max": 73,
+                  "min": 46
+                },
+                {
+                  "avg": 72,
+                  "day": "2025-11-29",
+                  "max": 73,
+                  "min": 46
+                }
+              ],
+              "pm25": [
+                {
+                  "avg": 198,
+                  "day": "2025-11-21",
+                  "max": 227,
+                  "min": 174
+                },
+                {
+                  "avg": 213,
+                  "day": "2025-11-22",
+                  "max": 252,
+                  "min": 162
+                },
+                {
+                  "avg": 207,
+                  "day": "2025-11-23",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 183,
+                  "day": "2025-11-24",
+                  "max": 246,
+                  "min": 138
+                },
+                {
+                  "avg": 191,
+                  "day": "2025-11-25",
+                  "max": 233,
+                  "min": 138
+                },
+                {
+                  "avg": 179,
+                  "day": "2025-11-26",
+                  "max": 227,
+                  "min": 158
+                },
+                {
+                  "avg": 209,
+                  "day": "2025-11-27",
+                  "max": 252,
+                  "min": 159
+                },
+                {
+                  "avg": 169,
+                  "day": "2025-11-28",
+                  "max": 174,
+                  "min": 138
+                },
+                {
+                  "avg": 173,
+                  "day": "2025-11-29",
+                  "max": 174,
+                  "min": 138
+                }
+              ],
+              "uvi": [
+                {
+                  "avg": 1,
+                  "day": "2025-11-23",
+                  "max": 3,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-24",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-25",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-26",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 1,
+                  "day": "2025-11-27",
+                  "max": 4,
+                  "min": 0
+                },
+                {
+                  "avg": 0,
+                  "day": "2025-11-28",
+                  "max": 0,
+                  "min": 0
+                }
+              ]
+            }
+          },
+          "debug": {
+            "sync": "2025-11-23T20:48:21+09:00"
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "successful": 7,
+    "errors": 0
+  }
+}

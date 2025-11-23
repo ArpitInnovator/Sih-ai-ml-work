@@ -13,7 +13,7 @@ if result["status"] == "success":
     data = result["data"]
     print(f"Station: {data.get('station_name')}")
     print(f"NO2: {data['concentrations']['no2']['value']} {data['concentrations']['no2']['unit']}")
-    print(f"CO: {data['concentrations']['co']['value']} {data['concentrations']['co']['unit']}")
+    print(f"O3: {data['concentrations']['o3']['value']} {data['concentrations']['o3']['unit']}")
 else:
     print(f"Error: {result.get('error')}")
 

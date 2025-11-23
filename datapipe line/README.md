@@ -1,12 +1,14 @@
 # Real-time Air Quality Data Pipeline for Delhi
 
-A Python data pipeline to fetch live air quality data for Delhi, specifically extracting NO2 (Nitrogen Dioxide) and CO (Carbon Monoxide) concentrations from the World Air Quality Index (WAQI) API.
+A Python data pipeline to fetch live air quality data for Delhi, specifically extracting NO2 (Nitrogen Dioxide) and O3 (Ozone) concentrations from the World Air Quality Index (WAQI) API.
 
 ## Features
 
 - ✅ Real-time air quality data fetching for Delhi
-- ✅ Extraction of NO2 and CO concentrations
+- ✅ Extraction of NO2 and O3 (Ozone) concentrations
 - ✅ Support for single fetch or continuous monitoring
+- ✅ **Fetch data for multiple monitoring sites (7 Delhi sites included)**
+- ✅ Fetch data by coordinates (latitude/longitude)
 - ✅ JSON output for data storage
 - ✅ Error handling and validation
 - ✅ Configurable API token management
@@ -72,6 +74,42 @@ With custom interval (e.g., every 30 minutes):
 python air_quality_pipeline.py --continuous --interval 1800
 ```
 
+### Fetch Data for All Delhi Sites
+
+Fetch air quality data for all 7 predefined Delhi monitoring sites:
+
+```bash
+python air_quality_pipeline.py --multiple
+```
+
+Or use the dedicated script:
+
+```bash
+python fetch_all_sites.py
+```
+
+This will fetch data for all 7 sites:
+- Site 1: 28.69536°N, 77.18168°E
+- Site 2: 28.5718°N, 77.07125°E
+- Site 3: 28.58278°N, 77.23441°E
+- Site 4: 28.82286°N, 77.10197°E
+- Site 5: 28.53077°N, 77.27123°E
+- Site 6: 28.72954°N, 77.09601°E
+- Site 7: 28.71052°N, 77.24951°E
+
+The results will be saved to `delhi_all_sites_air_quality.json`.
+
+### Fetch Data by Coordinates
+
+You can also programmatically fetch data for specific coordinates:
+
+```python
+from air_quality_pipeline import AirQualityPipeline
+
+pipeline = AirQualityPipeline()
+result = pipeline.get_air_quality_by_coordinates(28.69536, 77.18168)
+```
+
 ### Different City
 
 Fetch data for a different city:
@@ -115,14 +153,14 @@ The pipeline outputs JSON data with the following structure:
     "overall_aqi": 150,
     "measurement_time": "2024-01-15 10:00:00",
     "timezone": "+05:30",
-    "concentrations": {
+            "concentrations": {
       "no2": {
         "value": 45,
         "unit": "µg/m³",
         "available": true
       },
-      "co": {
-        "value": 1200,
+      "o3": {
+        "value": 120,
         "unit": "µg/m³",
         "available": true
       }
@@ -137,7 +175,7 @@ The pipeline handles various error scenarios:
 
 - **Network errors**: Connection timeouts, network failures
 - **API errors**: Invalid token, over quota, unknown city
-- **Data availability**: Missing NO2/CO data (some stations may not have all pollutants)
+- **Data availability**: Missing NO2/O3 data (some stations may not have all pollutants)
 
 ## API Documentation
 
