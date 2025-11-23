@@ -1,6 +1,7 @@
 # Core dependencies - using versions with pre-built wheels for Python 3.13
-# Pin numpy to 1.x for compatibility with ML models trained with numpy 1.x
-numpy>=1.26.0,<2.0.0
+# Note: Python 3.13 only has numpy 2.x wheels available
+# NumPy 2.x is backward compatible for loading models (joblib/pickle handles version differences)
+numpy>=1.26.0
 pandas>=2.2.0,<3.0.0
 scikit-learn>=1.4.0,<2.0.0
 joblib>=1.3.0,<2.0.0

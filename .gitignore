@@ -1,4 +1,6 @@
+# =============================================================================
 # Python
+# =============================================================================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -23,7 +25,9 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# =============================================================================
 # Virtual Environments
+# =============================================================================
 venv/
 env/
 ENV/
@@ -35,7 +39,12 @@ Backend/venv/
 Backend/.venv/
 models/venv/
 models/.venv/
+datapipe line/venv/
+datapipe line/.venv/
 
+# =============================================================================
+# IDE & Editor
+# =============================================================================
 # PyCharm
 .idea/
 *.iml
@@ -46,84 +55,171 @@ models/.venv/
 .vscode/
 *.code-workspace
 
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
 # Jupyter Notebook
 .ipynb_checkpoints
 *.ipynb
 
-# Environment variables
+# =============================================================================
+# Environment Variables & Secrets
+# =============================================================================
 .env
 .env.local
 .env.*.local
 *.env
-
-# Backend environment variables
+**/.env
+**/.env.local
+**/.env.*
+**/*.env
 Backend/.env
 Backend/.env.local
 Backend/.env.*
 Backend/*.env
 Backend/.env.*.local
 
-# All .env files in subdirectories
-**/.env
-**/.env.local
-**/.env.*
-**/*.env
+# API Keys and Credentials
+*.key
+*.pem
+*.cert
+credentials.json
+secrets.json
+config.json
+cdsapirc
+.credentials/
 
+# =============================================================================
 # Logs
+# =============================================================================
 *.log
+*.log.*
 logs/
 Backend/logs/
+**/logs/
 *.log.*
 
+# =============================================================================
 # Database
+# =============================================================================
 *.db
 *.sqlite
 *.sqlite3
+*.db-journal
 
-# OS Files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
-
-# Model files (uncomment if you don't want to track large model files)
+# =============================================================================
+# Model Files (Large binary files - uncomment if using Git LFS or external storage)
+# =============================================================================
+# Uncomment these if models are too large for Git
 # *.joblib
 # *.pkl
 # *.h5
 # *.pth
 # *.pt
 # *.ckpt
+# *.onnx
+# *.pb
+# *.tflite
 
-# Data files (uncomment if you don't want to track large data files)
+# Model directories (keep structure but ignore large files)
+# Backend/Data_SIH_2025/models/*.joblib
+# Backend/Data_SIH_2025/models/*.pkl
+# Backend/app/Data_SIH_2025/models/*.joblib
+# Backend/app/Data_SIH_2025/models/*.pkl
+# models/Data_SIH_2025/models/*.joblib
+# models/Data_SIH_2025/models/*.pkl
+
+# =============================================================================
+# Data Files (Large data files - uncomment if using Git LFS or external storage)
+# =============================================================================
+# Uncomment these if data files are too large for Git
 # *.csv
 # *.parquet
 # *.feather
 # *.hdf5
 # *.h5
+# *.nc
+# *.netcdf
+# *.zarr
 
-# Predictions and results (uncomment if you don't want to track generated files)
-# Backend/Data_SIH_2025/predictions/
-# Backend/Data_SIH_2025/results/
-# models/Data_SIH_2025/predictions/
-# models/Data_SIH_2025/results/
+# Specific data directories
+# Backend/Data_SIH_2025/*.csv
+# Backend/app/Data_SIH_2025/*.csv
+# models/Data_SIH_2025/*.csv
+# datapipe line/*.csv
+# datapipe line/*.json
 
-# Processed data (uncomment if you don't want to track processed data)
-# Backend/Data_SIH_2025/processed/
-# models/Data_SIH_2025/processed/
+# =============================================================================
+# Generated Files & Outputs
+# =============================================================================
+# Predictions (generated outputs)
+Backend/Data_SIH_2025/predictions/*.csv
+Backend/app/Data_SIH_2025/predictions/*.csv
+models/Data_SIH_2025/predictions/*.csv
 
-# Temporary files
+# Results (evaluation outputs)
+Backend/Data_SIH_2025/results/*.txt
+Backend/app/Data_SIH_2025/results/*.txt
+models/Data_SIH_2025/results/*.txt
+
+# Processed data (intermediate processing outputs)
+Backend/Data_SIH_2025/processed/*.csv
+Backend/app/Data_SIH_2025/processed/*.csv
+models/Data_SIH_2025/processed/*.csv
+
+# =============================================================================
+# Downloaded Data (Satellite, Reanalysis, etc.)
+# =============================================================================
+# ERA5 data
+data/era5/
+**/era5/
+*.nc
+*.netcdf
+
+# TROPOMI/Satellite data
+data/satellite/
+**/satellite/
+data/tropomi/
+**/tropomi/
+
+# GFS/NOAA data
+data/gfs/
+**/gfs/
+data/noaa/
+**/noaa/
+
+# Raw downloaded data
+data/raw/
+data/downloads/
+downloads/
+
+# =============================================================================
+# Temporary Files
+# =============================================================================
 *.tmp
 *.temp
 *.swp
 *.swo
 *~
 .cache/
+*.cache
+.pytest_cache/
+.hypothesis/
 
-# Coverage reports
+# =============================================================================
+# Testing & Coverage
+# =============================================================================
 htmlcov/
 .tox/
 .coverage
@@ -132,57 +228,62 @@ coverage.xml
 *.cover
 .hypothesis/
 .pytest_cache/
+test-results/
+test-output/
+.pytest_cache/
+TEST_REQUESTS.json
+test_*.json
 
-# mypy
+# =============================================================================
+# Type Checking
+# =============================================================================
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
-# Pyre type checker
 .pyre/
+.pytype/
 
+# =============================================================================
 # Docker
+# =============================================================================
 .dockerignore
 
+# =============================================================================
 # Node modules (if any frontend)
+# =============================================================================
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
+yarn.lock
 
-# Test files output
-.pytest_cache/
-test-results/
-test-output/
-
+# =============================================================================
 # Documentation builds
+# =============================================================================
 docs/_build/
 site/
+_build/
 
+# =============================================================================
 # Backup files
+# =============================================================================
 *.bak
 *.backup
 *~
 
-# IDE - Sublime Text
-*.sublime-project
-*.sublime-workspace
-
-# IDE - Vim
-*.swp
-*.swo
-*~
-
-# IDE - Emacs
-*~
-\#*\#
-.\#*
-
+# =============================================================================
+# OS Files
+# =============================================================================
 # MacOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
 .AppleDouble
 .LSOverride
 Icon
-._*
 
 # Windows
 $RECYCLE.BIN/
@@ -192,9 +293,40 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+Thumbs.db
+ehthumbs.db
+desktop.ini
+*.lnk
 
-# Project specific
+# Linux
+*~
+.directory
+.Trash-*
+
+# =============================================================================
+# Project Specific
+# =============================================================================
+# Log files
 Backend/logs/
 *.log
-TEST_REQUESTS.json
 
+# Test request files
+TEST_REQUESTS.json
+test_dummy_data*.json
+
+# PowerShell script outputs
+*.ps1.log
+
+# Data pipeline outputs
+datapipe line/__pycache__/
+datapipe line/*.pyc
+
+# =============================================================================
+# Large Files & Directories (Consider Git LFS)
+# =============================================================================
+# If using Git LFS, track these:
+# *.joblib
+# *.pkl
+# *.csv (large ones)
+# *.nc
+# *.h5

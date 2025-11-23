@@ -62,3 +62,28 @@
 2025-11-22 16:37:28 - app.main - INFO - Loaded unified model
 2025-11-22 16:37:28 - app.main - INFO - Successfully pre-loaded 8 model(s)
 2025-11-22 16:59:03 - app.main - INFO - Shutting down Air Pollution Forecasting API...
+2025-11-23 04:55:55 - app.main - INFO - Starting Air Pollution Forecasting API...
+2025-11-23 04:55:55 - app.main - INFO - Loading models...
+2025-11-23 04:55:55 - app.main - INFO - Pre-loading models (optional - will load on-demand if skipped)...
+2025-11-23 04:56:00 - app.main - INFO - Loaded model for site 1
+2025-11-23 04:56:00 - app.main - INFO - Loaded model for site 2
+2025-11-23 04:56:00 - app.main - INFO - Loaded model for site 3
+2025-11-23 04:56:00 - app.main - INFO - Loaded model for site 4
+2025-11-23 04:56:00 - app.main - INFO - Loaded model for site 5
+2025-11-23 04:56:00 - app.main - INFO - Loaded model for site 6
+2025-11-23 04:56:00 - app.main - INFO - Loaded model for site 7
+2025-11-23 04:56:00 - app.main - INFO - Loaded unified model
+2025-11-23 04:56:00 - app.main - INFO - Successfully pre-loaded 8 model(s)
+2025-11-23 05:03:04 - app.main - INFO - Shutting down Air Pollution Forecasting API...
+2025-11-23 05:03:06 - app.main - INFO - Starting Air Pollution Forecasting API...
+2025-11-23 05:03:06 - app.main - INFO - Loading models...
+2025-11-23 05:03:06 - app.main - INFO - Pre-loading models (optional - will load on-demand if skipped)...
+2025-11-23 05:03:07 - app.main - INFO - Loaded model for site 1
+2025-11-23 05:03:07 - app.main - INFO - Loaded model for site 2
+2025-11-23 05:03:07 - app.main - INFO - Loaded model for site 3
+2025-11-23 05:03:07 - app.main - INFO - Loaded model for site 4
+2025-11-23 05:03:07 - app.main - INFO - Loaded model for site 5
+2025-11-23 05:03:07 - app.main - INFO - Loaded model for site 6
+2025-11-23 05:03:07 - app.main - INFO - Loaded model for site 7
+2025-11-23 05:03:07 - app.main - INFO - Loaded unified model
+2025-11-23 05:03:07 - app.main - INFO - Successfully pre-loaded 8 model(s)

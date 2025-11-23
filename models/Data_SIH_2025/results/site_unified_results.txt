@@ -1,7 +1,7 @@
 ======================================================================
 SIH PS-10 - Training and Evaluation Results
 Site: unified
-Date: 2025-11-16 22:04:44
+Date: 2025-11-23 05:05:25
 ======================================================================
 
 Loading data from all sites...
@@ -36,16 +36,22 @@ UNIFIED O3 MODEL EVALUATION
 
 TRAIN SET:
   RMSE: 8.2975
+  MAE:  4.9321
+  Bias: -0.0022
   R²:   0.9408
   RIA:  0.9845
 
 TEST SET:
   RMSE: 8.5782
+  MAE:  5.0288
+  Bias: -0.2329
   R²:   0.9329
   RIA:  0.9820
 
 BASELINE (O3_forecast) on TEST SET:
   RMSE: 39.8230
+  MAE:  28.6864
+  Bias: -3.8472
   R²:   -0.4454
   RIA:  0.3832
 
@@ -57,16 +63,22 @@ UNIFIED NO2 MODEL EVALUATION
 
 TRAIN SET:
   RMSE: 7.5746
+  MAE:  4.9153
+  Bias: -0.0001
   R²:   0.9343
   RIA:  0.9826
 
 TEST SET:
   RMSE: 9.0503
+  MAE:  5.3447
+  Bias: -0.0622
   R²:   0.8956
   RIA:  0.9712
 
 BASELINE (NO2_forecast) on TEST SET:
   RMSE: 63.4153
+  MAE:  51.2034
+  Bias: 40.5194
   R²:   -4.1257
   RIA:  0.2905
 

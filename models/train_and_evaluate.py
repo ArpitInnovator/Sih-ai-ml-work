@@ -11,7 +11,7 @@ except ImportError:
     print("Error: xgboost not installed. Please run: pip install xgboost")
     import sys
     sys.exit(1)
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import os
 import sys
 from pathlib import Path
@@ -84,6 +84,14 @@ def calculate_ria(y_true, y_pred):
     
     ria = 1 - (numerator / denominator)
     return ria
+
+def calculate_bias(y_true, y_pred):
+    """
+    Calculate Bias (mean of residuals: predicted - actual)
+    Bias = mean(y_pred - y_true)
+    Positive bias means model overpredicts, negative means underpredicts
+    """
+    return np.mean(y_pred - y_true)
 
 def prepare_features(df, is_training=True):
     """Prepare features for model training/prediction"""
@@ -179,32 +187,44 @@ def train_models(train_file, test_file, site_num):
     
     # Train metrics
     rmse_train_o3 = np.sqrt(mean_squared_error(y_train_o3, y_pred_o3_train))
+    mae_train_o3 = mean_absolute_error(y_train_o3, y_pred_o3_train)
+    bias_train_o3 = calculate_bias(y_train_o3, y_pred_o3_train)
     r2_train_o3 = r2_score(y_train_o3, y_pred_o3_train)
     ria_train_o3 = calculate_ria(y_train_o3, y_pred_o3_train)
     
     # Test metrics
     rmse_test_o3 = np.sqrt(mean_squared_error(y_test_o3, y_pred_o3_test))
+    mae_test_o3 = mean_absolute_error(y_test_o3, y_pred_o3_test)
+    bias_test_o3 = calculate_bias(y_test_o3, y_pred_o3_test)
     r2_test_o3 = r2_score(y_test_o3, y_pred_o3_test)
     ria_test_o3 = calculate_ria(y_test_o3, y_pred_o3_test)
     
     # Baseline (O3_forecast)
     baseline_o3_test = test_df['O3_forecast'].values
     rmse_baseline_o3 = np.sqrt(mean_squared_error(y_test_o3, baseline_o3_test))
+    mae_baseline_o3 = mean_absolute_error(y_test_o3, baseline_o3_test)
+    bias_baseline_o3 = calculate_bias(y_test_o3, baseline_o3_test)
     r2_baseline_o3 = r2_score(y_test_o3, baseline_o3_test)
     ria_baseline_o3 = calculate_ria(y_test_o3, baseline_o3_test)
     
     print(f"\nTRAIN SET:")
     print(f"  RMSE: {rmse_train_o3:.4f}")
+    print(f"  MAE:  {mae_train_o3:.4f}")
+    print(f"  Bias: {bias_train_o3:.4f}")
     print(f"  R²:   {r2_train_o3:.4f}")
     print(f"  RIA:  {ria_train_o3:.4f}")
     
     print(f"\nTEST SET:")
     print(f"  RMSE: {rmse_test_o3:.4f}")
+    print(f"  MAE:  {mae_test_o3:.4f}")
+    print(f"  Bias: {bias_test_o3:.4f}")
     print(f"  R²:   {r2_test_o3:.4f}")
     print(f"  RIA:  {ria_test_o3:.4f}")
     
     print(f"\nBASELINE (O3_forecast) on TEST SET:")
     print(f"  RMSE: {rmse_baseline_o3:.4f}")
+    print(f"  MAE:  {mae_baseline_o3:.4f}")
+    print(f"  Bias: {bias_baseline_o3:.4f}")
     print(f"  R²:   {r2_baseline_o3:.4f}")
     print(f"  RIA:  {ria_baseline_o3:.4f}")
     
@@ -218,32 +238,44 @@ def train_models(train_file, test_file, site_num):
     
     # Train metrics
     rmse_train_no2 = np.sqrt(mean_squared_error(y_train_no2, y_pred_no2_train))
+    mae_train_no2 = mean_absolute_error(y_train_no2, y_pred_no2_train)
+    bias_train_no2 = calculate_bias(y_train_no2, y_pred_no2_train)
     r2_train_no2 = r2_score(y_train_no2, y_pred_no2_train)
     ria_train_no2 = calculate_ria(y_train_no2, y_pred_no2_train)
     
     # Test metrics
     rmse_test_no2 = np.sqrt(mean_squared_error(y_test_no2, y_pred_no2_test))
+    mae_test_no2 = mean_absolute_error(y_test_no2, y_pred_no2_test)
+    bias_test_no2 = calculate_bias(y_test_no2, y_pred_no2_test)
     r2_test_no2 = r2_score(y_test_no2, y_pred_no2_test)
     ria_test_no2 = calculate_ria(y_test_no2, y_pred_no2_test)
     
     # Baseline (NO2_forecast)
     baseline_no2_test = test_df['NO2_forecast'].values
     rmse_baseline_no2 = np.sqrt(mean_squared_error(y_test_no2, baseline_no2_test))
+    mae_baseline_no2 = mean_absolute_error(y_test_no2, baseline_no2_test)
+    bias_baseline_no2 = calculate_bias(y_test_no2, baseline_no2_test)
     r2_baseline_no2 = r2_score(y_test_no2, baseline_no2_test)
     ria_baseline_no2 = calculate_ria(y_test_no2, baseline_no2_test)
     
     print(f"\nTRAIN SET:")
     print(f"  RMSE: {rmse_train_no2:.4f}")
+    print(f"  MAE:  {mae_train_no2:.4f}")
+    print(f"  Bias: {bias_train_no2:.4f}")
     print(f"  R²:   {r2_train_no2:.4f}")
     print(f"  RIA:  {ria_train_no2:.4f}")
     
     print(f"\nTEST SET:")
     print(f"  RMSE: {rmse_test_no2:.4f}")
+    print(f"  MAE:  {mae_test_no2:.4f}")
+    print(f"  Bias: {bias_test_no2:.4f}")
     print(f"  R²:   {r2_test_no2:.4f}")
     print(f"  RIA:  {ria_test_no2:.4f}")
     
     print(f"\nBASELINE (NO2_forecast) on TEST SET:")
     print(f"  RMSE: {rmse_baseline_no2:.4f}")
+    print(f"  MAE:  {mae_baseline_no2:.4f}")
+    print(f"  Bias: {bias_baseline_no2:.4f}")
     print(f"  R²:   {r2_baseline_no2:.4f}")
     print(f"  RIA:  {ria_baseline_no2:.4f}")
     
@@ -281,20 +313,32 @@ def train_models(train_file, test_file, site_num):
     results = {
         'site': site_num,
         'O3_train_rmse': rmse_train_o3,
+        'O3_train_mae': mae_train_o3,
+        'O3_train_bias': bias_train_o3,
         'O3_train_r2': r2_train_o3,
         'O3_train_ria': ria_train_o3,
         'O3_test_rmse': rmse_test_o3,
+        'O3_test_mae': mae_test_o3,
+        'O3_test_bias': bias_test_o3,
         'O3_test_r2': r2_test_o3,
         'O3_test_ria': ria_test_o3,
         'O3_baseline_rmse': rmse_baseline_o3,
+        'O3_baseline_mae': mae_baseline_o3,
+        'O3_baseline_bias': bias_baseline_o3,
         'O3_improvement': improvement_o3,
         'NO2_train_rmse': rmse_train_no2,
+        'NO2_train_mae': mae_train_no2,
+        'NO2_train_bias': bias_train_no2,
         'NO2_train_r2': r2_train_no2,
         'NO2_train_ria': ria_train_no2,
         'NO2_test_rmse': rmse_test_no2,
+        'NO2_test_mae': mae_test_no2,
+        'NO2_test_bias': bias_test_no2,
         'NO2_test_r2': r2_test_no2,
         'NO2_test_ria': ria_test_no2,
         'NO2_baseline_rmse': rmse_baseline_no2,
+        'NO2_baseline_mae': mae_baseline_no2,
+        'NO2_baseline_bias': bias_baseline_no2,
         'NO2_improvement': improvement_no2,
     }
     
@@ -555,30 +599,42 @@ def train_unified_model(data_dir='Data_SIH_2025'):
         print("="*70)
         
         rmse_train_o3 = np.sqrt(mean_squared_error(y_train_o3, y_pred_o3_train))
+        mae_train_o3 = mean_absolute_error(y_train_o3, y_pred_o3_train)
+        bias_train_o3 = calculate_bias(y_train_o3, y_pred_o3_train)
         r2_train_o3 = r2_score(y_train_o3, y_pred_o3_train)
         ria_train_o3 = calculate_ria(y_train_o3, y_pred_o3_train)
         
         rmse_test_o3 = np.sqrt(mean_squared_error(y_test_o3, y_pred_o3_test))
+        mae_test_o3 = mean_absolute_error(y_test_o3, y_pred_o3_test)
+        bias_test_o3 = calculate_bias(y_test_o3, y_pred_o3_test)
         r2_test_o3 = r2_score(y_test_o3, y_pred_o3_test)
         ria_test_o3 = calculate_ria(y_test_o3, y_pred_o3_test)
         
         baseline_o3_test = combined_test['O3_forecast'].values
         rmse_baseline_o3 = np.sqrt(mean_squared_error(y_test_o3, baseline_o3_test))
+        mae_baseline_o3 = mean_absolute_error(y_test_o3, baseline_o3_test)
+        bias_baseline_o3 = calculate_bias(y_test_o3, baseline_o3_test)
         r2_baseline_o3 = r2_score(y_test_o3, baseline_o3_test)
         ria_baseline_o3 = calculate_ria(y_test_o3, baseline_o3_test)
         
         print(f"\nTRAIN SET:")
         print(f"  RMSE: {rmse_train_o3:.4f}")
+        print(f"  MAE:  {mae_train_o3:.4f}")
+        print(f"  Bias: {bias_train_o3:.4f}")
         print(f"  R²:   {r2_train_o3:.4f}")
         print(f"  RIA:  {ria_train_o3:.4f}")
         
         print(f"\nTEST SET:")
         print(f"  RMSE: {rmse_test_o3:.4f}")
+        print(f"  MAE:  {mae_test_o3:.4f}")
+        print(f"  Bias: {bias_test_o3:.4f}")
         print(f"  R²:   {r2_test_o3:.4f}")
         print(f"  RIA:  {ria_test_o3:.4f}")
         
         print(f"\nBASELINE (O3_forecast) on TEST SET:")
         print(f"  RMSE: {rmse_baseline_o3:.4f}")
+        print(f"  MAE:  {mae_baseline_o3:.4f}")
+        print(f"  Bias: {bias_baseline_o3:.4f}")
         print(f"  R²:   {r2_baseline_o3:.4f}")
         print(f"  RIA:  {ria_baseline_o3:.4f}")
         
@@ -591,30 +647,42 @@ def train_unified_model(data_dir='Data_SIH_2025'):
         print("="*70)
         
         rmse_train_no2 = np.sqrt(mean_squared_error(y_train_no2, y_pred_no2_train))
+        mae_train_no2 = mean_absolute_error(y_train_no2, y_pred_no2_train)
+        bias_train_no2 = calculate_bias(y_train_no2, y_pred_no2_train)
         r2_train_no2 = r2_score(y_train_no2, y_pred_no2_train)
         ria_train_no2 = calculate_ria(y_train_no2, y_pred_no2_train)
         
         rmse_test_no2 = np.sqrt(mean_squared_error(y_test_no2, y_pred_no2_test))
+        mae_test_no2 = mean_absolute_error(y_test_no2, y_pred_no2_test)
+        bias_test_no2 = calculate_bias(y_test_no2, y_pred_no2_test)
         r2_test_no2 = r2_score(y_test_no2, y_pred_no2_test)
         ria_test_no2 = calculate_ria(y_test_no2, y_pred_no2_test)
         
         baseline_no2_test = combined_test['NO2_forecast'].values
         rmse_baseline_no2 = np.sqrt(mean_squared_error(y_test_no2, baseline_no2_test))
+        mae_baseline_no2 = mean_absolute_error(y_test_no2, baseline_no2_test)
+        bias_baseline_no2 = calculate_bias(y_test_no2, baseline_no2_test)
         r2_baseline_no2 = r2_score(y_test_no2, baseline_no2_test)
         ria_baseline_no2 = calculate_ria(y_test_no2, baseline_no2_test)
         
         print(f"\nTRAIN SET:")
         print(f"  RMSE: {rmse_train_no2:.4f}")
+        print(f"  MAE:  {mae_train_no2:.4f}")
+        print(f"  Bias: {bias_train_no2:.4f}")
         print(f"  R²:   {r2_train_no2:.4f}")
         print(f"  RIA:  {ria_train_no2:.4f}")
         
         print(f"\nTEST SET:")
         print(f"  RMSE: {rmse_test_no2:.4f}")
+        print(f"  MAE:  {mae_test_no2:.4f}")
+        print(f"  Bias: {bias_test_no2:.4f}")
         print(f"  R²:   {r2_test_no2:.4f}")
         print(f"  RIA:  {ria_test_no2:.4f}")
         
         print(f"\nBASELINE (NO2_forecast) on TEST SET:")
         print(f"  RMSE: {rmse_baseline_no2:.4f}")
+        print(f"  MAE:  {mae_baseline_no2:.4f}")
+        print(f"  Bias: {bias_baseline_no2:.4f}")
         print(f"  R²:   {r2_baseline_no2:.4f}")
         print(f"  RIA:  {ria_baseline_no2:.4f}")
         

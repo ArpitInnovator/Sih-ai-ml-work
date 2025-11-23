@@ -1,0 +1,294 @@
+{
+  "status": "success",
+  "data": {
+    "timestamp": "2025-11-23T20:41:52.564699",
+    "station_id": 10111,
+    "station_name": "Major Dhyan Chand National Stadium, Delhi, Delhi, India",
+    "location": {
+      "latitude": 28.612498,
+      "longitude": 77.237388
+    },
+    "overall_aqi": 196,
+    "measurement_time": "2025-11-23 20:00:00",
+    "timezone": "+05:30",
+    "concentrations": {
+      "no2": {
+        "value": 66.5,
+        "unit": "µg/m³",
+        "available": true
+      },
+      "co": {
+        "value": 0.1,
+        "unit": "µg/m³",
+        "available": true
+      }
+    },
+    "all_iaqi": {
+      "co": {
+        "v": 0.1
+      },
+      "dew": {
+        "v": 11
+      },
+      "h": {
+        "v": 73.66666666666667
+      },
+      "no2": {
+        "v": 66.5
+      },
+      "o3": {
+        "v": 3.2
+      },
+      "p": {
+        "v": 992
+      },
+      "pm10": {
+        "v": 190
+      },
+      "pm25": {
+        "v": 196
+      },
+      "so2": {
+        "v": 9.6
+      },
+      "t": {
+        "v": 20.4
+      },
+      "w": {
+        "v": 0.6
+      },
+      "wd": {
+        "v": 203
+      }
+    }
+  },
+  "raw_response": {
+    "status": "ok",
+    "data": {
+      "aqi": 196,
+      "idx": 10111,
+      "attributions": [
+        {
+          "url": "http://dpccairdata.com/",
+          "name": "Delhi Pollution Control Commitee (Government of NCT of Delhi)",
+          "logo": "India-DPCCC.png"
+        },
+        {
+          "url": "https://waqi.info/",
+          "name": "World Air Quality Index Project"
+        }
+      ],
+      "city": {
+        "geo": [
+          28.612498,
+          77.237388
+        ],
+        "name": "Major Dhyan Chand National Stadium, Delhi, Delhi, India",
+        "url": "https://aqicn.org/city/delhi/major-dhyan-chand-national-stadium",
+        "location": ""
+      },
+      "dominentpol": "pm25",
+      "iaqi": {
+        "co": {
+          "v": 0.1
+        },
+        "dew": {
+          "v": 11
+        },
+        "h": {
+          "v": 73.66666666666667
+        },
+        "no2": {
+          "v": 66.5
+        },
+        "o3": {
+          "v": 3.2
+        },
+        "p": {
+          "v": 992
+        },
+        "pm10": {
+          "v": 190
+        },
+        "pm25": {
+          "v": 196
+        },
+        "so2": {
+          "v": 9.6
+        },
+        "t": {
+          "v": 20.4
+        },
+        "w": {
+          "v": 0.6
+        },
+        "wd": {
+          "v": 203
+        }
+      },
+      "time": {
+        "s": "2025-11-23 20:00:00",
+        "tz": "+05:30",
+        "v": 1763928000,
+        "iso": "2025-11-23T20:00:00+05:30"
+      },
+      "forecast": {
+        "daily": {
+          "pm10": [
+            {
+              "avg": 80,
+              "day": "2025-11-21",
+              "max": 87,
+              "min": 73
+            },
+            {
+              "avg": 98,
+              "day": "2025-11-22",
+              "max": 123,
+              "min": 61
+            },
+            {
+              "avg": 93,
+              "day": "2025-11-23",
+              "max": 123,
+              "min": 58
+            },
+            {
+              "avg": 70,
+              "day": "2025-11-24",
+              "max": 87,
+              "min": 46
+            },
+            {
+              "avg": 87,
+              "day": "2025-11-25",
+              "max": 123,
+              "min": 47
+            },
+            {
+              "avg": 69,
+              "day": "2025-11-26",
+              "max": 85,
+              "min": 53
+            },
+            {
+              "avg": 95,
+              "day": "2025-11-27",
+              "max": 123,
+              "min": 58
+            },
+            {
+              "avg": 69,
+              "day": "2025-11-28",
+              "max": 73,
+              "min": 46
+            },
+            {
+              "avg": 72,
+              "day": "2025-11-29",
+              "max": 73,
+              "min": 46
+            }
+          ],
+          "pm25": [
+            {
+              "avg": 180,
+              "day": "2025-11-21",
+              "max": 186,
+              "min": 174
+            },
+            {
+              "avg": 210,
+              "day": "2025-11-22",
+              "max": 252,
+              "min": 160
+            },
+            {
+              "avg": 207,
+              "day": "2025-11-23",
+              "max": 252,
+              "min": 159
+            },
+            {
+              "avg": 170,
+              "day": "2025-11-24",
+              "max": 189,
+              "min": 138
+            },
+            {
+              "avg": 194,
+              "day": "2025-11-25",
+              "max": 246,
+              "min": 138
+            },
+            {
+              "avg": 170,
+              "day": "2025-11-26",
+              "max": 186,
+              "min": 153
+            },
+            {
+              "avg": 207,
+              "day": "2025-11-27",
+              "max": 252,
+              "min": 159
+            },
+            {
+              "avg": 169,
+              "day": "2025-11-28",
+              "max": 174,
+              "min": 138
+            },
+            {
+              "avg": 173,
+              "day": "2025-11-29",
+              "max": 174,
+              "min": 138
+            }
+          ],
+          "uvi": [
+            {
+              "avg": 1,
+              "day": "2025-11-23",
+              "max": 3,
+              "min": 0
+            },
+            {
+              "avg": 1,
+              "day": "2025-11-24",
+              "max": 4,
+              "min": 0
+            },
+            {
+              "avg": 1,
+              "day": "2025-11-25",
+              "max": 4,
+              "min": 0
+            },
+            {
+              "avg": 1,
+              "day": "2025-11-26",
+              "max": 4,
+              "min": 0
+            },
+            {
+              "avg": 1,
+              "day": "2025-11-27",
+              "max": 4,
+              "min": 0
+            },
+            {
+              "avg": 0,
+              "day": "2025-11-28",
+              "max": 0,
+              "min": 0
+            }
+          ]
+        }
+      },
+      "debug": {
+        "sync": "2025-11-24T00:08:44+09:00"
+      }
+    }
+  }
+}

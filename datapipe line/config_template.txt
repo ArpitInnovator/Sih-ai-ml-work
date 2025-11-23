@@ -1,0 +1,14 @@
+# World Air Quality Index API Token Configuration
+# 
+# To use this pipeline:
+# 1. Get your API token from: https://aqicn.org/data-platform/token/
+# 2. Create a .env file in this directory
+# 3. Add the following line to .env:
+#    WAQI_API_TOKEN=your_actual_token_here
+#
+# Alternatively, you can pass the token as a command-line argument:
+#    python air_quality_pipeline.py --token your_token_here
+#
+# Note: The pipeline will use "demo" token by default if no token is provided
+# (limited requests per day)
+
