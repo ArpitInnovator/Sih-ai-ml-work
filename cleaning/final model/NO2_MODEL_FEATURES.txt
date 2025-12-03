@@ -1,0 +1,292 @@
+================================================================================
+NO2 MODEL - ALL FEATURES USED FOR TRAINING
+================================================================================
+Generated on: 2025-12-04 05:01:03
+
+Total Features: 110
+
+FEATURES BY CATEGORY:
+--------------------------------------------------------------------------------
+
+1. CORE POLLUTANTS:
+   - pm2p5
+   - pm10
+   - so2
+   - no2
+   - pm1
+   - no
+   Total: 6
+
+2. METEOROLOGICAL FEATURES:
+   - blh_era5
+   - t2m_era5
+   - d2m_era5
+   - wind_speed
+   - u10_era5
+   - v10_era5
+   - relative_humidity_approx
+   - tcc_era5
+   - sp
+   - dewpoint_depression
+   Total: 10
+
+3. LAG FEATURES:
+   - blh_lag_1h
+   - no2_lag_12h
+   - no2_lag_1h
+   - no2_lag_24h
+   - no2_lag_3h
+   - no2_lag_6h
+   - pm10_lag_12h
+   - pm10_lag_1h
+   - pm10_lag_24h
+   - pm10_lag_3h
+   - pm10_lag_6h
+   - pm2p5_lag_12h
+   - pm2p5_lag_1h
+   - pm2p5_lag_24h
+   - pm2p5_lag_3h
+   - pm2p5_lag_6h
+   - so2_lag_12h
+   - so2_lag_1h
+   - so2_lag_24h
+   - so2_lag_3h
+   - so2_lag_6h
+   - t2m_era5_lag_12h
+   - t2m_era5_lag_1h
+   - t2m_era5_lag_24h
+   - t2m_era5_lag_3h
+   - t2m_era5_lag_6h
+   - wind_speed_lag_12h
+   - wind_speed_lag_1h
+   - wind_speed_lag_24h
+   - wind_speed_lag_3h
+   - wind_speed_lag_6h
+   Total: 31
+
+4. ROLLING MEAN FEATURES:
+   - blh_rolling_mean_3h
+   - no2_rolling_mean_12h
+   - no2_rolling_mean_24h
+   - no2_rolling_mean_3h
+   - no2_rolling_mean_6h
+   - pm10_rolling_mean_12h
+   - pm10_rolling_mean_24h
+   - pm10_rolling_mean_3h
+   - pm10_rolling_mean_6h
+   - pm2p5_rolling_mean_12h
+   - pm2p5_rolling_mean_24h
+   - pm2p5_rolling_mean_3h
+   - pm2p5_rolling_mean_6h
+   Total: 13
+
+5. INTERACTION FEATURES:
+   - blh_inversion
+   - blh_no2_lag1_interaction
+   - blh_temp_interaction
+   - blh_wind
+   - blh_wind_interaction
+   - hour_temp_interaction
+   - hour_weekend_interaction
+   - no2_pm25_product
+   - no2_pm25_ratio
+   - no2lag_blhlag
+   - pm25_pm10_product
+   - pm25_pm10_ratio
+   - wind_uv_product
+   Total: 13
+
+6. TIME FEATURES:
+   - day_of_week
+   - hour
+   - hour_cos
+   - hour_sin
+   - is_weekday
+   - is_weekend
+   - month
+   - month_cos
+   - month_sin
+   Total: 9
+
+7. SEASON FEATURES:
+   - is_monsoon
+   - is_post_monsoon
+   - is_summer
+   - is_winter
+   Total: 4
+
+8. SEASON-ROBUST FEATURES (High impact for R²):
+   - blh_roll3
+   - blh_rolling_mean_3h
+   - blh_wind
+   - hour_weekend_interaction
+   - inv
+   - stability
+   - ventilation
+   - ventilation_rate
+   Total: 8
+
+9. WINTER-SPECIFIC FEATURES:
+   - blh_inv
+   - blh_inversion
+   - inversion_strength
+   - inversion_strength_abs
+   - is_night
+   - morning_peak
+   - no2_blhlag
+   - no2lag_blhlag
+   - temperature_roll3
+   Total: 9
+
+10. POST-MONSOON FEATURES:
+   - diwali_flag
+   - festival_flag
+   - low_blh
+   - low_blh_flag
+   - low_wind_flag
+   - stubble_burning_flag
+   - wind_stagnation_index
+   Total: 7
+
+11. BLH-BASED FEATURES:
+   - blh_inv
+   - blh_lag_1h
+   - low_blh
+   - low_blh_flag
+   - no2_blhlag
+   Total: 5
+
+12. WIND COMPONENT FEATURES:
+   - low_wind_flag
+   - wind_speed_lag_12h
+   - wind_speed_lag_1h
+   - wind_speed_lag_24h
+   - wind_speed_lag_3h
+   - wind_speed_lag_6h
+   - wind_stagnation_index
+   - wind_u
+   - wind_u_abs
+   - wind_v
+   - wind_v_abs
+   Total: 11
+
+13. OTHER FEATURES:
+   - solar_elevation
+   Total: 1
+
+
+================================================================================
+ALL FEATURES IN MODEL ORDER:
+--------------------------------------------------------------------------------
+  1. pm2p5
+  2. pm10
+  3. so2
+  4. no2
+  5. pm1
+  6. no
+  7. blh_era5
+  8. t2m_era5
+  9. d2m_era5
+ 10. wind_speed
+ 11. u10_era5
+ 12. v10_era5
+ 13. relative_humidity_approx
+ 14. tcc_era5
+ 15. sp
+ 16. dewpoint_depression
+ 17. blh_lag_1h
+ 18. blh_rolling_mean_3h
+ 19. blh_no2_lag1_interaction
+ 20. no2_lag_1h
+ 21. pm2p5_lag_1h
+ 22. pm10_lag_1h
+ 23. so2_lag_1h
+ 24. t2m_era5_lag_1h
+ 25. wind_speed_lag_1h
+ 26. no2_lag_3h
+ 27. pm2p5_lag_3h
+ 28. pm10_lag_3h
+ 29. so2_lag_3h
+ 30. t2m_era5_lag_3h
+ 31. wind_speed_lag_3h
+ 32. no2_lag_6h
+ 33. pm2p5_lag_6h
+ 34. pm10_lag_6h
+ 35. so2_lag_6h
+ 36. t2m_era5_lag_6h
+ 37. wind_speed_lag_6h
+ 38. no2_lag_12h
+ 39. pm2p5_lag_12h
+ 40. pm10_lag_12h
+ 41. so2_lag_12h
+ 42. t2m_era5_lag_12h
+ 43. wind_speed_lag_12h
+ 44. no2_lag_24h
+ 45. pm2p5_lag_24h
+ 46. pm10_lag_24h
+ 47. so2_lag_24h
+ 48. t2m_era5_lag_24h
+ 49. wind_speed_lag_24h
+ 50. no2_rolling_mean_3h
+ 51. pm2p5_rolling_mean_3h
+ 52. pm10_rolling_mean_3h
+ 53. no2_rolling_mean_6h
+ 54. pm2p5_rolling_mean_6h
+ 55. pm10_rolling_mean_6h
+ 56. no2_rolling_mean_12h
+ 57. pm2p5_rolling_mean_12h
+ 58. pm10_rolling_mean_12h
+ 59. no2_rolling_mean_24h
+ 60. pm2p5_rolling_mean_24h
+ 61. pm10_rolling_mean_24h
+ 62. pm25_pm10_ratio
+ 63. pm25_pm10_product
+ 64. no2_pm25_ratio
+ 65. no2_pm25_product
+ 66. wind_u
+ 67. wind_v
+ 68. wind_u_abs
+ 69. wind_v_abs
+ 70. wind_uv_product
+ 71. inv
+ 72. inversion_strength
+ 73. ventilation
+ 74. blh_wind
+ 75. ventilation_rate
+ 76. stability
+ 77. hour
+ 78. is_weekend
+ 79. hour_weekend_interaction
+ 80. blh_roll3
+ 81. blh_temp_interaction
+ 82. hour_temp_interaction
+ 83. month
+ 84. day_of_week
+ 85. is_weekday
+ 86. hour_sin
+ 87. hour_cos
+ 88. month_sin
+ 89. month_cos
+ 90. is_winter
+ 91. is_summer
+ 92. is_monsoon
+ 93. is_post_monsoon
+ 94. inversion_strength_abs
+ 95. is_night
+ 96. morning_peak
+ 97. blh_wind_interaction
+ 98. blh_inversion
+ 99. blh_inv
+100. no2lag_blhlag
+101. no2_blhlag
+102. temperature_roll3
+103. stubble_burning_flag
+104. diwali_flag
+105. festival_flag
+106. low_wind_flag
+107. wind_stagnation_index
+108. low_blh_flag
+109. low_blh
+110. solar_elevation
+
+================================================================================

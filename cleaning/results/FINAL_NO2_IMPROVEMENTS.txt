@@ -1,0 +1,86 @@
+================================================================================
+FINAL NO2 MODEL IMPROVEMENTS
+================================================================================
+Generated on: 2025-12-04 05:01:03
+
+IMPROVEMENTS IMPLEMENTED:
+--------------------------------------------------------------------------------
+SEASON-ROBUST FEATURES (High impact for R²):
+   (A) Inversion strength: inv = t2m - d2m
+   (B) Ventilation index: ventilation = blh × wind_speed
+   (C) Stability index: stability = inv × (1 / blh) [NEW - critical]
+   (D) Traffic proxies: hour, is_weekend, (hour × is_weekend)
+   (E) Smooth BLH: blh_roll3 = blh.rolling(3).mean()
+   Why it helps: Reduces unexplained variance → R² increases
+
+STEP 1 — WINTER NO₂ FEATURES (CRITICAL):
+   - inversion_strength: t2m_era5 - d2m_era5
+   - is_night: 1 if (hour < 7 or hour > 20) else 0
+   - morning_peak: 1 if (hour in [7,8,9])
+   - blh_wind: blh × wind_speed
+   - blh_inversion: blh × inversion_strength
+   - no2lag_blhlag: NO2_target_lag1 × blh
+   - blh_roll3: rolling mean of BLH over 3 hours
+   - temperature_roll3: rolling mean of temperature over 3 hours
+
+STEP 1 — WINTER LIGHTGBM PARAMETERS:
+   - num_leaves: 40 (31-48 range)
+   - min_data_in_leaf: 300 (200-500 range)
+   - feature_fraction: 0.7 (0.6-0.8 range)
+   - lambda_l2: 0.3 (0.2-0.5 range)
+   - learning_rate: 0.03 (0.02-0.05 range)
+   Expected: Winter RMSE 27.4 → ~22-24
+
+STEP 2 — POST-MONSOON EVENT FEATURES:
+   - stubble_burning_flag: 1 if month in [10,11] else 0
+   - diwali_flag: 1 for 5 days around Diwali
+   - low_wind_flag: wind_speed < 1.0
+   - low_blh_flag: blh < 100
+   Expected: RMSE 25.1 → ~22-23
+
+STEP 3 — PEAK-WEIGHTED TRAINING:
+   - Weight: 4 if NO2_target >= 75th percentile, else 1
+   - Applied to all NO2 models (global, winter, post-monsoon)
+   Expected: RMSE reduction ~1-2 points
+
+STEP 4 — ISOTONIC CALIBRATION:
+   - Fit isotonic regression on validation set
+   - Apply correction to test predictions
+   Expected: Bias and RMSE reduction ~2-6%
+
+STEP 5 — IMPROVED BLENDING LOGIC:
+   - Soft blending: 70% seasonal + 30% global
+   - Adaptive blending: Use seasonal only if RMSE < global RMSE
+   - Hard blending: Use seasonal if available (winter highest priority)
+
+4. ✓ Peak-weighted training:
+   - Weight factor: 4.0x for NO2 > 75th percentile
+   - Applied to both global, winter, and post-monsoon models
+
+5. ✓ Residual calibration:
+   - Isotonic regression calibration
+   - Applied to all model predictions
+
+6. ✓ BLH-based lag features:
+   - blh_lag_1h
+   - blh_rolling_mean_3h
+   - blh_no2_lag1_interaction
+
+PERFORMANCE:
+--------------------------------------------------------------------------------
+Global Model RMSE:     15.610865, R²: 0.185411
+Hard Blended RMSE:     18.803512, R²: -0.181851
+Soft Blended RMSE:     17.118171, R²: 0.020511
+Adaptive Blended RMSE: 15.610865, R²: 0.185411
+Soft Blended Improvement: -9.66%
+Adaptive Improvement:    0.00%
+
+MODEL FILES:
+--------------------------------------------------------------------------------
+O3 Model: models/final_o3_model.txt/.pkl
+NO2 Global: models/final_no2_global_model.txt/.pkl
+NO2 Winter: models/final_no2_winter_model.txt/.pkl
+NO2 Post-Monsoon: models/final_no2_post_monsoon_model.txt/.pkl
+(Models include calibrators in pickle files)
+
+================================================================================

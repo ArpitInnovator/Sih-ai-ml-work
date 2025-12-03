@@ -1,0 +1,188 @@
+================================================================================
+O3 MODEL - COMPLETE FEATURE LIST
+================================================================================
+Generated on: 2025-12-04 03:12:50
+Total Features: 70
+
+FEATURE CATEGORIES:
+--------------------------------------------------------------------------------
+
+1. CORE POLLUTANTS (4 features):
+   - pm2p5
+   - pm10
+   - so2
+   - no2
+
+2. METEOROLOGICAL FEATURES (17 features):
+   - blh_era5
+   - t2m_era5
+   - d2m_era5
+   - wind_speed
+   - u10_era5
+   - v10_era5
+   - relative_humidity_approx
+   - tcc_era5
+   - sp
+   - dewpoint_depression
+   - pbl_wind_product
+   - t2m_era5_lag_1h
+   - t2m_era5_lag_3h
+   - t2m_era5_lag_6h
+   - t2m_era5_rolling_mean_3h
+   - t2m_era5_rolling_mean_6h
+   - t2m_era5_rolling_mean_12h
+
+3. SOLAR/PHOTOCHEMICAL BASE FEATURES (20 features):
+   - solar_elevation
+   - solar_elevation_abs
+   - solar_elevation_squared
+   - solar_elevation_positive
+   - SZA_deg
+   - sza_rad
+   - cos_sza
+   - photolysis_rate_approx
+   - temp_solar_elevation
+   - temp_solar_elevation_squared
+   - temp_photolysis
+   - temp_cos_sza
+   - pbl_solar_elevation
+   - pbl_solar_elevation_squared
+   - pbl_photolysis
+   - pbl_cos_sza
+   - weekend_solar
+   - solar_elevation_lag_1h
+   - solar_elevation_lag_3h
+   - solar_elevation_lag_6h
+
+4. PHOTOCHEMICAL INTERACTION FEATURES (9 features):
+   - temp_solar_elevation
+   - temp_solar_elevation_squared
+   - temp_photolysis
+   - temp_cos_sza
+   - pbl_solar_elevation
+   - pbl_solar_elevation_squared
+   - pbl_photolysis
+   - pbl_cos_sza
+   - pbl_temp
+
+5. OTHER INTERACTION FEATURES (4 features):
+   - ventilation_rate
+   - pbl_wind_product
+   - rh_temp_interaction
+   - weekend_solar
+
+6. LAG FEATURES (12 features):
+   - O3_target_lag_1h
+   - O3_target_lag_3h
+   - O3_target_lag_6h
+   - no2_lag_1h
+   - no2_lag_3h
+   - no2_lag_6h
+   - solar_elevation_lag_1h
+   - solar_elevation_lag_3h
+   - solar_elevation_lag_6h
+   - t2m_era5_lag_1h
+   - t2m_era5_lag_3h
+   - t2m_era5_lag_6h
+
+7. ROLLING MEAN FEATURES (9 features):
+   - O3_target_rolling_mean_12h
+   - O3_target_rolling_mean_3h
+   - O3_target_rolling_mean_6h
+   - no2_rolling_mean_12h
+   - no2_rolling_mean_3h
+   - no2_rolling_mean_6h
+   - t2m_era5_rolling_mean_12h
+   - t2m_era5_rolling_mean_3h
+   - t2m_era5_rolling_mean_6h
+
+8. TIME FEATURES (9 features):
+   - month
+   - hour
+   - day_of_week
+   - is_weekend
+   - is_weekday
+   - hour_sin
+   - hour_cos
+   - month_sin
+   - month_cos
+
+9. SEASON FEATURES (4 features):
+   - is_winter
+   - is_summer
+   - is_monsoon
+   - is_post_monsoon
+
+================================================================================
+COMPLETE FEATURE LIST (in model order):
+================================================================================
+  1. pm2p5
+  2. pm10
+  3. so2
+  4. no2
+  5. blh_era5
+  6. t2m_era5
+  7. d2m_era5
+  8. wind_speed
+  9. u10_era5
+ 10. v10_era5
+ 11. relative_humidity_approx
+ 12. tcc_era5
+ 13. sp
+ 14. dewpoint_depression
+ 15. solar_elevation
+ 16. solar_elevation_abs
+ 17. solar_elevation_squared
+ 18. solar_elevation_positive
+ 19. is_daytime
+ 20. SZA_deg
+ 21. sza_rad
+ 22. cos_sza
+ 23. photolysis_rate_approx
+ 24. temp_solar_elevation
+ 25. temp_solar_elevation_squared
+ 26. temp_photolysis
+ 27. temp_cos_sza
+ 28. pbl_solar_elevation
+ 29. pbl_solar_elevation_squared
+ 30. pbl_photolysis
+ 31. pbl_cos_sza
+ 32. pbl_temp
+ 33. ventilation_rate
+ 34. pbl_wind_product
+ 35. rh_temp_interaction
+ 36. weekend_solar
+ 37. O3_target_lag_1h
+ 38. no2_lag_1h
+ 39. t2m_era5_lag_1h
+ 40. solar_elevation_lag_1h
+ 41. O3_target_lag_3h
+ 42. no2_lag_3h
+ 43. t2m_era5_lag_3h
+ 44. solar_elevation_lag_3h
+ 45. O3_target_lag_6h
+ 46. no2_lag_6h
+ 47. t2m_era5_lag_6h
+ 48. solar_elevation_lag_6h
+ 49. O3_target_rolling_mean_3h
+ 50. no2_rolling_mean_3h
+ 51. t2m_era5_rolling_mean_3h
+ 52. O3_target_rolling_mean_6h
+ 53. no2_rolling_mean_6h
+ 54. t2m_era5_rolling_mean_6h
+ 55. O3_target_rolling_mean_12h
+ 56. no2_rolling_mean_12h
+ 57. t2m_era5_rolling_mean_12h
+ 58. month
+ 59. hour
+ 60. day_of_week
+ 61. is_weekend
+ 62. is_weekday
+ 63. hour_sin
+ 64. hour_cos
+ 65. month_sin
+ 66. month_cos
+ 67. is_winter
+ 68. is_summer
+ 69. is_monsoon
+ 70. is_post_monsoon

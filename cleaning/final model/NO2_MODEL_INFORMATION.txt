@@ -1,0 +1,200 @@
+================================================================================
+NO2 MODEL - COMPLETE MODEL INFORMATION
+================================================================================
+Generated on: 2025-12-04 05:01:03
+
+MODEL ARCHITECTURE:
+--------------------------------------------------------------------------------
+NO2 models use a multi-model ensemble approach:
+1. Global Model: Trained on all seasons
+2. Winter Specialist: Trained on Dec-Feb data only
+3. Post-Monsoon Specialist: Trained on Oct-Nov data only
+4. Blending: Soft blending (70% seasonal + 30% global) used as final model
+
+MODEL PERFORMANCE:
+--------------------------------------------------------------------------------
+GLOBAL MODEL:
+Train RMSE: 9.521330
+Train R²:   0.897476
+Val RMSE:   18.291674
+Val R²:     0.679125
+Test RMSE:  15.610865
+Test MAE:   12.889423
+Test R²:    0.185411
+Baseline RMSE: 25.887636
+Improvement: 39.70%
+
+SOFT BLENDED MODEL (FINAL):
+Test RMSE:  17.118171
+Test MAE:   13.228362
+Test R²:    0.020511
+Improvement: 33.88%
+
+HARD BLENDED MODEL:
+Test RMSE:  18.803512
+Test MAE:   13.806710
+Test R²:    -0.181851
+Improvement: 27.36%
+
+HYPERPARAMETERS:
+--------------------------------------------------------------------------------
+GLOBAL MODEL:
+objective: regression
+metric: rmse
+boosting_type: gbdt
+num_leaves: 15
+max_depth: 5
+learning_rate: 0.03
+feature_fraction: 0.7
+bagging_fraction: 0.7
+bagging_freq: 5
+min_data_in_leaf: 50
+lambda_l1: 1.0
+lambda_l2: 1.0
+random_state: 42
+num_boost_round: 200
+early_stopping_rounds: 30
+sample_weight: 4.0x for NO2 > 75th percentile
+
+WINTER SPECIALIST MODEL:
+num_leaves: 40
+min_data_in_leaf: 300
+feature_fraction: 0.7
+lambda_l2: 0.3
+learning_rate: 0.03
+(Other parameters same as global)
+
+POST-MONSOON SPECIALIST MODEL:
+num_leaves: 40
+min_data_in_leaf: 200
+lambda_l1: 1.5
+lambda_l2: 1.5
+(Other parameters same as global)
+
+DATA SPLITS:
+--------------------------------------------------------------------------------
+Train Period: 2020-01-01 to 2021-12-31
+Val Period:   2022-01-01 to 2022-03-31
+Test Period:  2022-07-01 to 2022-12-31
+Train Samples: 11155 (approximate)
+Val Samples:   1342 (approximate)
+Test Samples:  2893 (approximate)
+
+FEATURE ENGINEERING STEPS:
+--------------------------------------------------------------------------------
+1. Time Features:
+   - Extract: year, month, day, hour, day_of_week, day_of_year
+   - Create: is_weekend, is_weekday
+   - Cyclical encoding: hour_sin, hour_cos, month_sin, month_cos
+
+2. Lag Features:
+   - Create lags for: no2, pm2p5, pm10, so2, t2m_era5, wind_speed
+   - Lag windows: 1h, 3h, 6h, 12h, 24h
+   - BLH lags: blh_lag_1h
+
+3. Rolling Mean Features:
+   - Create rolling means for: no2, pm2p5, pm10
+   - Windows: 3h, 6h, 12h, 24h
+   - BLH rolling: blh_roll3 (3-hour rolling mean)
+   - Temperature rolling: temperature_roll3 (3-hour rolling mean)
+
+4. Season-Robust Features (High impact for R²):
+   - inv: t2m_era5 - d2m_era5 (inversion strength)
+   - ventilation: blh_era5 × wind_speed (ventilation index)
+   - stability: inv × (1 / blh_era5) (stability index)
+   - hour_weekend_interaction: hour × is_weekend (traffic pattern)
+
+5. Winter-Specific Features:
+   - inversion_strength: t2m_era5 - d2m_era5
+   - is_night: 1 if (hour < 7 or hour > 20) else 0
+   - morning_peak: 1 if hour in [7,8,9] else 0
+   - blh_wind: blh_era5 × wind_speed
+   - blh_inversion: blh_era5 × inversion_strength
+   - no2lag_blhlag: NO2_target_lag1 × blh_era5
+
+6. Post-Monsoon Features:
+   - stubble_burning_flag: 1 if month in [10,11] else 0
+   - diwali_flag: 1 for 5 days around Diwali (Oct 20-24, Nov 1-5)
+   - low_wind_flag: 1 if wind_speed < 1.0 else 0
+   - low_blh_flag: 1 if blh_era5 < 100 else 0
+
+7. Interaction Features:
+   - PM interactions: pm25_pm10_ratio, pm25_pm10_product
+   - NO2-PM interactions: no2_pm25_ratio, no2_pm25_product
+   - BLH interactions: blh_temp_interaction, blh_no2_lag1_interaction
+   - Hour interactions: hour_temp_interaction
+
+8. Wind Component Features:
+   - wind_u, wind_v (u10_era5, v10_era5)
+   - wind_u_abs, wind_v_abs
+   - wind_uv_product
+
+TRAINING PROCESS:
+--------------------------------------------------------------------------------
+1. Peak-Weighted Training:
+   - Samples with NO2_target >= 75th percentile get 4.0x weight
+   - Applied to all models (global, winter, post-monsoon)
+
+2. Residual Calibration:
+   - Isotonic regression calibrator trained on validation set
+   - Applied to test predictions to reduce bias
+   - Calibrator saved with each model in pickle file
+
+3. Blending Strategy:
+   - Soft blending: 0.7 × seasonal_pred + 0.3 × global_pred
+   - Hard blending: Use seasonal model if available (winter highest priority)
+   - Adaptive blending: Use seasonal only if RMSE < global RMSE
+   - Final model uses soft blending for better stability
+
+TOP 20 MOST IMPORTANT FEATURES:
+--------------------------------------------------------------------------------
+pm1                                          46376909.15
+d2m_era5                                     38871559.17
+no2lag_blhlag                                36104357.54
+month                                        22240412.01
+no2_pm25_product                             20244796.37
+stability                                    17526840.27
+blh_era5                                     14574315.80
+blh_temp_interaction                          9156741.90
+no2_blhlag                                    7519754.43
+month_sin                                     5363643.49
+pm2p5                                         4326220.14
+blh_no2_lag1_interaction                      3890068.91
+hour_cos                                      3647407.91
+t2m_era5_lag_6h                               2695311.74
+pm2p5_lag_3h                                  2575220.32
+blh_lag_1h                                    2378850.22
+blh_rolling_mean_3h                           2349388.31
+pm2p5_rolling_mean_3h                         2337040.09
+blh_roll3                                     2209128.95
+pm2p5_rolling_mean_24h                        2072683.50
+
+DATA PREPROCESSING:
+--------------------------------------------------------------------------------
+1. Missing values: Filled with median of training data
+2. Categorical features: Encoded using pandas Categorical codes
+3. Boolean features: Converted to integers (0/1)
+4. Feature selection: Only numeric features passed to LightGBM
+5. Duplicate removal: Features deduplicated while preserving order
+
+MODEL FILES:
+--------------------------------------------------------------------------------
+Global Model: models/final_no2_global_model.txt/.pkl
+Winter Model: models/final_no2_winter_model.txt/.pkl
+Post-Monsoon Model: models/final_no2_post_monsoon_model.txt/.pkl
+(Pickle files include both model and calibrator)
+
+REPLICATION INSTRUCTIONS:
+--------------------------------------------------------------------------------
+1. Load the data: master_site1_final_cleaned.csv
+2. Run feature engineering as described above
+3. Use the same train/val/test splits
+4. Load models from pickle files (includes calibrators)
+5. Apply calibrators to predictions before blending
+6. Use soft blending: 0.7 × seasonal + 0.3 × global
+7. Select seasonal model based on month:
+   - Winter (Dec-Feb): Use winter model
+   - Post-Monsoon (Oct-Nov): Use post-monsoon model
+   - Other seasons: Use global model
+
+================================================================================

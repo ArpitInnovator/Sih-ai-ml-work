@@ -1,0 +1,85 @@
+================================================================================
+FEATURE ENGINEERING AND ANALYSIS REPORT
+================================================================================
+
+Generated on: 2025-12-04 00:41:38
+
+Dataset Information:
+  - Original shape: (27408, 93)
+  - Total features: 93
+  - Total samples: 27408
+  - Missing values: 30608
+  - Memory usage: 18.82 MB
+
+
+Target Variables:
+  - NO2_target:
+    Mean: 35.6900
+    Std: 28.1415
+    Min: 0.3800
+    Max: 288.5700
+    Missing: 0 (0.00%)
+  - O3_target:
+    Mean: 25.5723
+    Std: 30.7911
+    Min: 0.2000
+    Max: 199.3500
+    Missing: 0 (0.00%)
+  - co:
+    Mean: 0.0000
+    Std: 0.0000
+    Min: 0.0000
+    Max: 0.0000
+    Missing: 0 (0.00%)
+  - hcho:
+    Mean: 0.0000
+    Std: 0.0000
+    Min: 0.0000
+    Max: 0.0000
+    Missing: 0 (0.00%)
+
+
+Top Correlated Features (by absolute correlation):
+
+  NO2_target:
+    1. NO2_target_rolling_mean_6h: 0.8649
+    2. NO2_target_rolling_std_6h: 0.6354
+    3. pm1: 0.5184
+    4. pm2p5: 0.5075
+    5. pm10: 0.5049
+    6. pm2p5_lag_1h: 0.4908
+    7. pm10_lag_1h: 0.4881
+    8. so2: 0.4847
+    9. so2_lag_1h: 0.4595
+    10. co: 0.4552
+
+  O3_target:
+    1. O3_target_rolling_mean_6h: 0.8020
+    2. O3_target_rolling_std_6h: 0.5842
+    3. blh_era5: 0.5729
+    4. dewpoint_depression: 0.5559
+    5. relative_humidity_approx: -0.5471
+    6. blh_wind_interaction: 0.5105
+    7. no2: -0.4742
+    8. no2_lag_1h: -0.4705
+    9. t2m_era5: 0.4568
+    10. SZA_deg: -0.4461
+
+
+Feature Categories:
+  Time Features: 9 features
+    year, month, day, hour, day_of_week, hour_sin, hour_cos, month_sin, month_cos
+  Weather Features: 16 features
+    d2m_era5, tcc_era5, wind_dir_deg, sp, blh_era5, wind_speed, t2m_era5, wind_magnitude, wind_direction_rad, wind_u_squared
+    ... and 6 more
+  Air Quality Features: 42 features
+    no2, pm1, so2, HCHO_satellite, NO2_target, co, NO2_satellite_flag, O3_target, NO2_satellite_daily, NO2_satellite
+    ... and 32 more
+  Satellite Features: 12 features
+    HCHO_satellite, ratio_satellite_flag, NO2_satellite_flag, NO2_satellite_daily, NO2_satellite, HCHO_satellite_daily, NO2_satellite_lag_1h, ratio_satellite, HCHO_satellite_flag, ratio_satellite_daily
+    ... and 2 more
+  Forecast Features: 7 features
+    NO2_forecast, O3_forecast, T_forecast, q_forecast, u_forecast, v_forecast, w_forecast
+  Engineered Features: 31 features
+    NO2_satellite_lag_1h, NO2_satellite_lag_3h, dewpoint_depression, relative_humidity_approx, no2_pm25_ratio, pm25_pm10_ratio, satellite_ratio, aod_ratio, blh_wind_interaction, no2_lag_1h
+    ... and 21 more
