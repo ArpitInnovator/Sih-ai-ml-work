@@ -559,7 +559,7 @@ const ModelEvaluation = () => {
             <XAxis dataKey="site" stroke={theme === 'dark' ? '#94a3b8' : '#64748b'} />
             <YAxis
               stroke={theme === 'dark' ? '#94a3b8' : '#64748b'}
-              domain={selectedMetric === 'R2' || selectedMetric === 'RIA' ? [0, 1] : 'auto'}
+              domain={selectedMetric === 'R2' || selectedMetric === 'RIA' ? [0, 1] : undefined}
             />
             <Tooltip
               contentStyle={{
