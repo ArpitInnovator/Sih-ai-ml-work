@@ -152,6 +152,7 @@ export default function Forecast() {
                 </div>
 
                 <ForecastChart data={forecastData} siteId={selectedSite} timeRange={timeRange} />
+
               </div>
             )}
 
