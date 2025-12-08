@@ -85,16 +85,63 @@ const HeatLayer: React.FC<{
   return null;
 };
 
+// Component to fit map bounds to show all markers
+const FitBounds: React.FC<{ sites: SiteReading[] }> = ({ sites }) => {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!map || sites.length === 0) return;
+    
+    // Calculate bounds from all site locations
+    const bounds = L.latLngBounds(
+      sites.map(site => [site.lat, site.lon] as LatLngTuple)
+    );
+    
+    // Fit bounds with padding to ensure all markers are visible
+    map.fitBounds(bounds, {
+      padding: [50, 50], // Add padding so markers aren't at the edge
+      maxZoom: 12, // Limit max zoom to keep overview
+    });
+  }, [map, sites]);
+
+  return null;
+};
+
 export default function DelhiAirMap({ sites, onRefresh }: DelhiAirMapProps) {
   const { theme } = useTheme();
   const [dataset, setDataset] = useState<Dataset>('actual');
 
   const data = sites ?? defaultSites;
-  const center: LatLngTuple = [28.61, 77.21];
-  const bounds: LatLngBoundsExpression = [
-    [28.35, 76.8],
-    [28.95, 77.45],
-  ];
+  
+  // Calculate center and bounds dynamically from site locations
+  const center: LatLngTuple = useMemo(() => {
+    if (data.length === 0) return [28.61, 77.21];
+    const avgLat = data.reduce((sum, site) => sum + site.lat, 0) / data.length;
+    const avgLon = data.reduce((sum, site) => sum + site.lon, 0) / data.length;
+    return [avgLat, avgLon];
+  }, [data]);
+
+  const bounds: LatLngBoundsExpression = useMemo(() => {
+    if (data.length === 0) {
+      return [
+        [28.35, 76.8],
+        [28.95, 77.45],
+      ];
+    }
+    const lats = data.map(site => site.lat);
+    const lons = data.map(site => site.lon);
+    const minLat = Math.min(...lats);
+    const maxLat = Math.max(...lats);
+    const minLon = Math.min(...lons);
+    const maxLon = Math.max(...lons);
+    // Add padding to bounds
+    const latPadding = (maxLat - minLat) * 0.1;
+    const lonPadding = (maxLon - minLon) * 0.1;
+    return [
+      [minLat - latPadding, minLon - lonPadding],
+      [maxLat + latPadding, maxLon + lonPadding],
+    ];
+  }, [data]);
 
   const gradient = useMemo(
     () => ({
@@ -179,7 +226,7 @@ export default function DelhiAirMap({ sites, onRefresh }: DelhiAirMapProps) {
                 <MapContainer
                   center={center}
                   zoom={11}
-                  minZoom={10}
+                  minZoom={9}
                   maxZoom={16}
                   maxBounds={bounds}
                   maxBoundsViscosity={1.0}
@@ -187,6 +234,7 @@ export default function DelhiAirMap({ sites, onRefresh }: DelhiAirMapProps) {
                   className="h-full w-full"
                 >
                   <TileLayer attribution='&copy; OpenStreetMap' url={tileUrl} />
+                  <FitBounds sites={data} />
                   <HeatLayer points={heatPoints} gradient={gradient} />
 
                   {data.map((site) => {
