@@ -45,7 +45,7 @@ export default function PollutantGauge({
     <div className={`rounded-xl p-4 flex flex-col items-center border ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200 shadow-sm'}`}>
       <h3 className={`text-sm font-semibold mb-4 ${theme === 'dark' ? 'text-slate-100' : 'text-slate-900'}`}>{name}</h3>
 
-      <div className="relative w-24 h-24">
+      <div className="relative w-20 h-20 md:w-24 md:h-24">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -54,8 +54,8 @@ export default function PollutantGauge({
               cy="50%"
               startAngle={180}
               endAngle={0}
-              innerRadius={40}
-              outerRadius={50}
+              innerRadius={32}
+              outerRadius={40}
               dataKey="value"
             >
               <Cell fill={statusColor} />
