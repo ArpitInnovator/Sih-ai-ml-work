@@ -1,0 +1,20 @@
+{
+  "data_dir": "Data_SIH_2025_with_blh/Data_SIH_2025_with_blh/with_satellite",
+  "site_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "seq_length": 24,
+  "prediction_horizon": 1,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "num_epochs": 100,
+  "loss_type": "mae",
+  "patience": 10,
+  "save_dir": "models/tcn_gnn"
+}

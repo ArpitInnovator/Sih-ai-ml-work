@@ -21,7 +21,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-from tcn_gnn_model import TCNGNNModel, create_graph_edges
+from tcn_gnn_model import TCNGNNModel
 from data_loader import create_data_loaders
 
 
