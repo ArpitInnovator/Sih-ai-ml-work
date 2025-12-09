@@ -20,6 +20,8 @@ import os
 import json
 from datetime import datetime
 import joblib
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Configuration
 DATA_DIR = "Data_SIH_2025_with_blh/Data_SIH_2025_with_blh/with_satellite"
@@ -277,7 +279,7 @@ def split_time_series_by_month(df, X, y_o3, y_no2):
 
 
 def train_model(X_train, y_train, X_val, y_val, target_name, params):
-    """Train XGBoost model for a single target with early stopping."""
+    """Train XGBoost model for a single target with early stopping and track metrics."""
     # Early stopping parameters
     early_stopping_rounds = 30
     min_rounds = 20
@@ -285,6 +287,13 @@ def train_model(X_train, y_train, X_val, y_val, target_name, params):
     # Create base params without n_estimators for incremental training
     base_params = {k: v for k, v in params.items() if k != 'n_estimators'}
     max_rounds = params.get('n_estimators', 300)
+    
+    # Lists to store metrics at each iteration
+    iterations = []
+    train_rmse_history = []
+    train_r2_history = []
+    val_rmse_history = []
+    val_r2_history = []
     
     # Initialize model
     model = xgb.XGBRegressor(**base_params, n_estimators=min_rounds)
@@ -294,6 +303,9 @@ def train_model(X_train, y_train, X_val, y_val, target_name, params):
     best_model = None
     rounds_without_improvement = 0
     best_iteration = min_rounds
+    
+    # Train model first (simplified approach)
+    print(f"  Training model and tracking metrics...")
     
     try:
         # Try using callbacks for newer XGBoost versions (2.0+)
@@ -323,21 +335,21 @@ def train_model(X_train, y_train, X_val, y_val, target_name, params):
             # Train incrementally
             for round_num in range(min_rounds, max_rounds + 1, 10):
                 # Update n_estimators
-                model = xgb.XGBRegressor(**base_params, n_estimators=round_num)
-                model.fit(
+                temp_model = xgb.XGBRegressor(**base_params, n_estimators=round_num)
+                temp_model.fit(
                     X_train, y_train,
                     eval_set=[(X_val, y_val)],
                     verbose=False
                 )
                 
                 # Evaluate on validation set
-                y_val_pred = model.predict(X_val)
+                y_val_pred = temp_model.predict(X_val)
                 val_rmse = np.sqrt(mean_squared_error(y_val, y_val_pred))
                 
                 # Check for improvement
                 if val_rmse < best_val_rmse:
                     best_val_rmse = val_rmse
-                    best_model = model
+                    best_model = temp_model
                     best_iteration = round_num
                     rounds_without_improvement = 0
                 else:
@@ -353,6 +365,34 @@ def train_model(X_train, y_train, X_val, y_val, target_name, params):
                 # If no improvement, use the last model
                 model = xgb.XGBRegressor(**base_params, n_estimators=best_iteration)
                 model.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=False)
+    
+    # After training, calculate metrics at different iteration points for plotting
+    print(f"  Calculating metrics at each iteration for plotting...")
+    actual_iterations = min(best_iteration, max_rounds)
+    
+    # Sample iterations (every 5 iterations for efficiency, or all if < 100)
+    step = 1 if actual_iterations < 100 else 5
+    
+    for iteration in range(1, actual_iterations + 1, step):
+        try:
+            # Get predictions at this iteration using iteration_range
+            y_train_pred_iter = model.predict(X_train, iteration_range=(0, iteration))
+            y_val_pred_iter = model.predict(X_val, iteration_range=(0, iteration))
+            
+            # Calculate metrics
+            train_rmse_iter = np.sqrt(mean_squared_error(y_train, y_train_pred_iter))
+            train_r2_iter = r2_score(y_train, y_train_pred_iter)
+            val_rmse_iter = np.sqrt(mean_squared_error(y_val, y_val_pred_iter))
+            val_r2_iter = r2_score(y_val, y_val_pred_iter)
+            
+            iterations.append(iteration)
+            train_rmse_history.append(train_rmse_iter)
+            train_r2_history.append(train_r2_iter)
+            val_rmse_history.append(val_rmse_iter)
+            val_r2_history.append(val_r2_iter)
+        except Exception:
+            # If iteration_range doesn't work, skip this iteration
+            continue
     
     # Predictions
     y_train_pred = model.predict(X_train)
@@ -376,6 +416,15 @@ def train_model(X_train, y_train, X_val, y_val, target_name, params):
     if train_r2 - val_r2 > 0.15:
         print(f"  ⚠️  WARNING: Potential overfitting detected (Train R² - Val R² = {train_r2 - val_r2:.4f})")
     
+    # Store training history
+    training_history = {
+        'iterations': iterations,
+        'train_rmse': train_rmse_history,
+        'train_r2': train_r2_history,
+        'val_rmse': val_rmse_history,
+        'val_r2': val_r2_history
+    }
+    
     return model, {
         'train_rmse': float(train_rmse),
         'train_mae': float(train_mae),
@@ -385,7 +434,8 @@ def train_model(X_train, y_train, X_val, y_val, target_name, params):
         'val_mae': float(val_mae),
         'val_bias': float(val_bias),
         'val_r2': float(val_r2),
-        'best_iteration': best_iteration
+        'best_iteration': best_iteration,
+        'training_history': training_history
     }
 
 
@@ -399,8 +449,98 @@ def get_feature_importance(model, feature_names, top_n=20):
     return importance_df.head(top_n)
 
 
+def plot_training_curves(training_history, site_id, target_name, model_dir, timestamp):
+    """Plot R² and RMSE curves throughout training iterations."""
+    if not training_history or not training_history.get('iterations'):
+        print(f"  ⚠️  No training history available for plotting")
+        return
+    
+    iterations = training_history['iterations']
+    train_rmse = training_history['train_rmse']
+    train_r2 = training_history['train_r2']
+    val_rmse = training_history['val_rmse']
+    val_r2 = training_history['val_r2']
+    
+    # Create plots directory
+    plots_dir = os.path.join(model_dir, f"site_{site_id}", "training_curves")
+    os.makedirs(plots_dir, exist_ok=True)
+    
+    # Set style
+    sns.set_style("whitegrid")
+    plt.rcParams['figure.figsize'] = (14, 5)
+    
+    # Create figure with two subplots
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+    
+    # Plot 1: RMSE over iterations
+    ax1.plot(iterations, train_rmse, label='Train RMSE', linewidth=2, color='blue', alpha=0.7)
+    ax1.plot(iterations, val_rmse, label='Validation RMSE', linewidth=2, color='red', alpha=0.7)
+    ax1.set_xlabel('Iteration', fontsize=12)
+    ax1.set_ylabel('RMSE', fontsize=12)
+    ax1.set_title(f'{target_name} - RMSE vs Iteration (Site {site_id})', fontsize=13, fontweight='bold')
+    ax1.legend(fontsize=10)
+    ax1.grid(True, alpha=0.3)
+    ax1.set_xlim(left=0)
+    
+    # Plot 2: R² over iterations
+    ax2.plot(iterations, train_r2, label='Train R²', linewidth=2, color='blue', alpha=0.7)
+    ax2.plot(iterations, val_r2, label='Validation R²', linewidth=2, color='red', alpha=0.7)
+    ax2.set_xlabel('Iteration', fontsize=12)
+    ax2.set_ylabel('R²', fontsize=12)
+    ax2.set_title(f'{target_name} - R² vs Iteration (Site {site_id})', fontsize=13, fontweight='bold')
+    ax2.legend(fontsize=10)
+    ax2.grid(True, alpha=0.3)
+    ax2.set_xlim(left=0)
+    ax2.set_ylim(bottom=0, top=1.1)
+    
+    plt.tight_layout()
+    
+    # Save plot
+    plot_path = os.path.join(plots_dir, f"{target_name}_training_curves_{timestamp}.png")
+    plt.savefig(plot_path, dpi=300, bbox_inches='tight')
+    plt.close()
+    
+    print(f"  Training curves saved: {plot_path}")
+    
+    # Also create combined plot with both metrics
+    fig, ax = plt.subplots(figsize=(12, 6))
+    
+    # Plot RMSE (left y-axis)
+    ax2_twin = ax.twinx()
+    line1 = ax.plot(iterations, train_r2, label='Train R²', linewidth=2, color='blue', alpha=0.7)
+    line2 = ax.plot(iterations, val_r2, label='Val R²', linewidth=2, color='red', alpha=0.7)
+    line3 = ax2_twin.plot(iterations, train_rmse, label='Train RMSE', linewidth=2, color='blue', 
+                          linestyle='--', alpha=0.7)
+    line4 = ax2_twin.plot(iterations, val_rmse, label='Val RMSE', linewidth=2, color='red', 
+                          linestyle='--', alpha=0.7)
+    
+    ax.set_xlabel('Iteration', fontsize=12)
+    ax.set_ylabel('R²', fontsize=12, color='black')
+    ax2_twin.set_ylabel('RMSE', fontsize=12, color='black')
+    ax.set_title(f'{target_name} - Training Curves (Site {site_id})', fontsize=14, fontweight='bold')
+    
+    # Combine legends
+    lines = line1 + line2 + line3 + line4
+    labels = [l.get_label() for l in lines]
+    ax.legend(lines, labels, loc='center right', fontsize=10)
+    
+    ax.grid(True, alpha=0.3)
+    ax.set_xlim(left=0)
+    ax.set_ylim(bottom=0, top=1.1)
+    
+    plt.tight_layout()
+    
+    # Save combined plot
+    plot_path_combined = os.path.join(plots_dir, f"{target_name}_combined_curves_{timestamp}.png")
+    plt.savefig(plot_path_combined, dpi=300, bbox_inches='tight')
+    plt.close()
+    
+    print(f"  Combined curves saved: {plot_path_combined}")
+
+
 def save_site_models(site_id, o3_model, no2_model, feature_cols, o3_metrics, no2_metrics, 
-                     o3_importance, no2_importance, model_dir, timestamp):
+                     o3_importance, no2_importance, model_dir, timestamp, 
+                     o3_training_history=None, no2_training_history=None):
     """Save models and metadata for a site."""
     os.makedirs(model_dir, exist_ok=True)
     site_dir = os.path.join(model_dir, f"site_{site_id}")
@@ -462,6 +602,15 @@ def save_site_models(site_id, o3_model, no2_model, feature_cols, o3_metrics, no2
     metrics_df.to_csv(metrics_csv_path, index=False)
     print(f"  Standardized metrics saved to: {metrics_csv_path}")
     
+    # Plot training curves
+    if o3_training_history:
+        print(f"\n  Plotting O3 training curves...")
+        plot_training_curves(o3_training_history, site_id, 'O3', model_dir, timestamp)
+    
+    if no2_training_history:
+        print(f"  Plotting NO2 training curves...")
+        plot_training_curves(no2_training_history, site_id, 'NO2', model_dir, timestamp)
+    
     return site_dir
 
 
@@ -493,12 +642,14 @@ def train_site_model(site_id, data_dir, model_dir, timestamp):
     o3_model, o3_metrics = train_model(
         X_train, y_o3_train, X_val, y_o3_val, 'O3', XGB_PARAMS['O3']
     )
+    o3_training_history = o3_metrics.get('training_history', None)
     
     # Train NO2 model
     print(f"\n  Training NO2 model...")
     no2_model, no2_metrics = train_model(
         X_train, y_no2_train, X_val, y_no2_val, 'NO2', XGB_PARAMS['NO2']
     )
+    no2_training_history = no2_metrics.get('training_history', None)
     
     # Feature importance
     o3_importance = get_feature_importance(o3_model, feature_cols, top_n=20)
@@ -508,7 +659,9 @@ def train_site_model(site_id, data_dir, model_dir, timestamp):
     site_dir = save_site_models(
         site_id, o3_model, no2_model, feature_cols,
         o3_metrics, no2_metrics, o3_importance, no2_importance,
-        model_dir, timestamp
+        model_dir, timestamp,
+        o3_training_history=o3_training_history,
+        no2_training_history=no2_training_history
     )
     
     return {
